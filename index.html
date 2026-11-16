@@ -4,622 +4,597 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OmarSports - Tactics Builder</title>
+<title>OMARSPORTS | Ultimate Football Hub</title>
+<meta name="theme-color" content="#080d17">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root {
+    --bg:#080d17;
+    --panel:#101a2a;
+    --panel2:#162338;
+    --border:#26364c;
+    --green:#b5ff35;
+    --text:#f3f6fb;
+    --muted:#8493a9;
+    --red:#ef4444;
+    --blue:#4ea5ff;
 }
-
+* {box-sizing:border-box;margin:0;padding:0}
+html {scroll-behavior:smooth;scroll-padding-top:90px}
 body {
-    font-family: Arial, sans-serif;
-    background: #080d16;
-    color: white;
-    min-height: 100vh;
+    background:var(--bg);
+    color:var(--text);
+    font-family:Inter,sans-serif;
+    overflow-x:hidden;
 }
-
-header {
-    padding: 22px 15px;
-    text-align: center;
-    background: #101a2b;
-    border-bottom: 2px solid #b5ff35;
+button,input,select {font:inherit}
+button {cursor:pointer}
+a {color:inherit;text-decoration:none}
+img {max-width:100%}
+.container {max-width:1250px;margin:auto;padding:0 22px}
+.muted {color:var(--muted)}
+.green {color:var(--green)}
+.eyebrow {
+    color:var(--green);
+    font-size:10px;
+    letter-spacing:2px;
+    font-weight:800;
+    text-transform:uppercase;
 }
-
-header h1 {
-    color: #b5ff35;
-    font-size: 27px;
-    letter-spacing: 2px;
+.section {padding:65px 0}
+.section-head {
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    gap:15px;
+    margin-bottom:25px;
 }
-
-header p {
-    color: #9ca9bb;
-    font-size: 12px;
-    margin-top: 7px;
+.section-head h2 {
+    font:800 32px "Barlow Condensed",sans-serif;
+    text-transform:uppercase;
+    letter-spacing:1px;
 }
-
-.container {
-    max-width: 950px;
-    margin: auto;
-    padding: 20px 15px;
+.btn {
+    padding:11px 17px;
+    border:1px solid var(--border);
+    border-radius:8px;
+    color:white;
+    background:var(--panel2);
+    font-size:12px;
+    font-weight:700;
+    transition:.2s;
 }
-
-.section {
-    background: #111c2d;
-    padding: 18px;
-    border-radius: 14px;
-    margin-bottom: 20px;
-    border: 1px solid #26364d;
+.btn:hover {border-color:var(--green);color:var(--green)}
+.btn-primary {background:var(--green);color:#0a111a;border:0}
+.btn-primary:hover {background:white;color:#080d17}
+.card {
+    background:linear-gradient(145deg,#142136,#0f1929);
+    border:1px solid var(--border);
+    border-radius:15px;
+    overflow:hidden;
 }
-
-.section h2 {
-    font-size: 15px;
-    margin-bottom: 15px;
-    color: #b5ff35;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+.tag {
+    font-size:9px;
+    padding:5px 8px;
+    border-radius:5px;
+    background:#27394e;
+    color:#c5d3e6;
+    font-weight:800;
+    letter-spacing:1px;
 }
-
-.clubs {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+.topbar {
+    height:36px;
+    background:#060a11;
+    border-bottom:1px solid #182338;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 5%;
+    color:#9ba8ba;
+    font-size:10px;
 }
-
-.club {
-    background: #19263a;
-    border: 2px solid transparent;
-    color: white;
-    border-radius: 12px;
-    padding: 12px 5px;
-    cursor: pointer;
-    transition: .2s;
+.topbar strong {color:var(--green)}
+.navbar {
+    height:76px;
+    background:rgba(8,13,23,.94);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:100;
 }
-
-.club:hover {
-    background: #263750;
+.nav-inner {
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
 }
-
-.club.active {
-    border-color: #b5ff35;
-    background: #263b27;
+.brand {
+    font:900 29px "Barlow Condensed",sans-serif;
+    letter-spacing:1px;
+    white-space:nowrap;
 }
-
-.club img {
-    width: 55px;
-    height: 55px;
-    object-fit: contain;
-    display: block;
-    margin: auto auto 8px;
+.brand span {color:var(--green)}
+.brand small {
+    display:block;
+    font:700 8px Inter,sans-serif;
+    color:var(--muted);
+    letter-spacing:3px;
 }
-
-.club span {
-    font-size: 11px;
-    font-weight: bold;
+.navlinks {
+    display:flex;
+    align-items:center;
+    gap:23px;
 }
-
-.formations {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+.navlinks a {
+    font-size:11px;
+    font-weight:700;
+    color:#aebbd0;
+    transition:.2s;
 }
-
-.formation {
-    background: #19263a;
-    color: white;
-    border: 1px solid #35445b;
-    border-radius: 9px;
-    padding: 13px 5px;
-    font-weight: bold;
-    cursor: pointer;
+.navlinks a:hover {color:var(--green)}
+.nav-actions {display:flex;gap:9px;align-items:center}
+.icon-btn {
+    width:37px;height:37px;
+    display:grid;place-items:center;
+    background:var(--panel2);
+    color:white;border:1px solid var(--border);
+    border-radius:8px;
 }
-
-.formation.active {
-    background: #b5ff35;
-    color: #101820;
-    border-color: #b5ff35;
+.menu-btn {display:none}
+.hero {
+    min-height:530px;
+    display:flex;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+    background:
+    linear-gradient(90deg,#080d17 0%,rgba(8,13,23,.96) 38%,rgba(8,13,23,.28) 100%),
+    linear-gradient(0deg,#080d17,transparent 45%),
+    url("https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1800") center/cover;
 }
-
-.description {
-    color: #aebbd0;
-    font-size: 12px;
-    line-height: 1.6;
-    margin-top: 13px;
+.hero-content {max-width:650px;padding:90px 0;position:relative}
+.hero h1 {
+    font:900 clamp(55px,9vw,105px)/.87 "Barlow Condensed",sans-serif;
+    text-transform:uppercase;
+    margin:20px 0;
 }
-
-.pitch-wrapper {
-    padding: 12px;
-    background: #111c2d;
-    border-radius: 14px;
-    border: 1px solid #26364d;
+.hero h1 span {color:var(--green)}
+.hero p {color:#b3bfd0;max-width:500px;font-size:13px;line-height:1.9}
+.hero-buttons {display:flex;gap:12px;margin-top:27px;flex-wrap:wrap}
+.hero-stats {
+    display:flex;gap:35px;margin-top:45px;
+    border-top:1px solid #39465b;padding-top:22px;
 }
-
-.pitch-heading {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    margin-bottom: 12px;
+.hero-stat strong {
+    display:block;font:800 27px "Barlow Condensed",sans-serif;
 }
-
-.pitch-heading h2 {
-    font-size: 15px;
-    color: #b5ff35;
+.hero-stat span {font-size:9px;color:var(--muted);letter-spacing:1px}
+.ticker {
+    background:var(--green);
+    color:#08110b;
+    height:42px;
+    overflow:hidden;
+    display:flex;align-items:center;
+    font-size:11px;font-weight:800;
 }
-
-.pitch-heading span {
-    font-size: 11px;
-    color: #aebbd0;
+.ticker-label {background:#09120b;color:var(--green);padding:14px 18px;white-space:nowrap}
+.ticker-track {white-space:nowrap;animation:marquee 35s linear infinite}
+.ticker-track span {margin:0 30px}
+@keyframes marquee {to{transform:translateX(-50%)}}
+.featured {
+    display:grid;grid-template-columns:1.3fr .7fr;gap:18px;
 }
-
+.featured-match {
+    padding:25px;
+    background:radial-gradient(circle at 50% 30%,#263b4b,#111c2b 65%);
+}
+.match-meta {display:flex;justify-content:space-between;align-items:center}
+.match-teams {
+    display:grid;grid-template-columns:1fr auto 1fr;
+    align-items:center;text-align:center;
+    gap:12px;padding:35px 0;
+}
+.team-logo {
+    width:75px;height:75px;
+    object-fit:contain;
+    margin:auto;
+    display:block;
+}
+.team-name {font-weight:800;font-size:13px;margin-top:12px}
+.score {
+    font:900 48px "Barlow Condensed",sans-serif;
+}
+.match-time {font-size:10px;color:var(--muted);margin-top:7px}
+.match-note {text-align:center;color:var(--muted);font-size:10px}
+.match-bottom {
+    border-top:1px solid var(--border);
+    margin-top:18px;padding-top:15px;
+    display:flex;justify-content:space-between;align-items:center;
+}
+.quick-grid {display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.quick-card {padding:20px;min-height:125px}
+.quick-card .number {font:800 31px "Barlow Condensed",sans-serif;margin:12px 0 3px}
+.quick-card p {font-size:10px;color:var(--muted)}
+.quick-card .small-title {font-size:10px;color:var(--muted);font-weight:700}
+.match-list {display:grid;gap:10px}
+.match-row {
+    padding:15px;
+    display:grid;
+    grid-template-columns:70px 1fr auto 1fr 70px;
+    gap:10px;
+    align-items:center;
+    text-align:center;
+}
+.match-row img {width:30px;height:30px;object-fit:contain;vertical-align:middle}
+.match-row strong {font-size:11px}
+.match-row .result {font-weight:900;color:var(--green);font-size:13px}
+.match-row .date {font-size:9px;color:var(--muted)}
+.match-row .status {font-size:9px;color:var(--muted)}
+.table-wrap {overflow-x:auto}
+table {width:100%;border-collapse:collapse;min-width:600px}
+th {
+    color:var(--muted);
+    font-size:9px;text-transform:uppercase;
+    letter-spacing:1px;text-align:center;
+    padding:15px 10px;
+    background:#0b1422;
+}
+td {padding:14px 10px;text-align:center;font-size:11px;border-top:1px solid var(--border)}
+td.club-cell {text-align:left;font-weight:700}
+.club-cell img {width:27px;height:27px;object-fit:contain;vertical-align:middle;margin-right:10px}
+tr:hover td {background:#17253a}
+.position {color:var(--muted);margin-right:10px}
+.points {color:var(--green);font-weight:900}
+.tabs {display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.tab {
+    padding:10px 15px;border-radius:7px;
+    border:1px solid var(--border);
+    background:var(--panel);color:var(--muted);
+    font-size:10px;font-weight:800;
+}
+.tab.active {background:var(--green);color:#08110b;border-color:var(--green)}
+.clubs-grid {display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
+.club-card {
+    padding:20px;text-align:center;
+    cursor:pointer;transition:.25s;
+}
+.club-card:hover {transform:translateY(-5px);border-color:var(--green)}
+.club-card.selected {border-color:var(--green);background:#192a2c}
+.club-card img {height:68px;width:68px;object-fit:contain;margin-bottom:12px}
+.club-card h3 {font-size:12px}
+.club-card p {font-size:9px;color:var(--muted);margin-top:5px}
+.news-grid {display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.news-card {transition:.25s}
+.news-card:hover {transform:translateY(-5px)}
+.news-image {height:175px;position:relative;overflow:hidden}
+.news-image img {width:100%;height:100%;object-fit:cover;transition:.4s}
+.news-card:hover img {transform:scale(1.06)}
+.news-content {padding:18px}
+.news-content h3 {font-size:14px;line-height:1.6;margin:12px 0}
+.news-content p {font-size:10px;color:var(--muted);line-height:1.7}
+.news-meta {font-size:9px;color:var(--muted);margin-top:15px}
+.tactics-layout {display:grid;grid-template-columns:300px 1fr;gap:20px}
+.tactics-controls {padding:20px}
+.control-label {
+    font-size:10px;color:var(--muted);
+    font-weight:800;letter-spacing:1px;
+    margin:18px 0 10px;display:block;
+}
+.select {
+    width:100%;padding:12px;
+    border:1px solid var(--border);
+    background:#0a1422;color:white;
+    border-radius:8px;outline:none;
+}
+.formation-grid {display:grid;grid-template-columns:repeat(2,1fr);gap:7px}
+.formation-btn {
+    background:#1b2a40;color:#c2d0e3;
+    border:1px solid var(--border);
+    padding:11px 4px;border-radius:7px;
+    font-size:11px;font-weight:800;
+}
+.formation-btn.active {background:var(--green);color:#07120a;border-color:var(--green)}
+.pitch-card {padding:15px}
+.pitch-head {display:flex;justify-content:space-between;gap:10px;margin-bottom:13px;align-items:center}
 .pitch {
-    width: 100%;
-    max-width: 650px;
-    aspect-ratio: 0.72;
-    margin: auto;
-    position: relative;
-    overflow: hidden;
-    background: repeating-linear-gradient(
-        0deg,
-        #16804a 0px,
-        #16804a 65px,
-        #147442 65px,
-        #147442 130px
-    );
-    border: 3px solid white;
+    position:relative;
+    width:100%;max-width:520px;
+    aspect-ratio: .78;
+    margin:auto;
+    overflow:hidden;
+    border:3px solid rgba(255,255,255,.8);
+    background:repeating-linear-gradient(0deg,#167346 0px,#167346 65px,#11643b 65px,#11643b 130px);
 }
-
-.pitch-line {
-    position: absolute;
-    border: 2px solid rgba(255,255,255,.85);
-    pointer-events: none;
-}
-
-.center-line {
-    width: 100%;
-    top: 50%;
-    border-width: 2px 0 0;
-}
-
-.center-circle {
-    width: 25%;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-}
-
-.penalty-top {
-    width: 55%;
-    height: 14%;
-    top: 0;
-    left: 22.5%;
-    border-top: 0;
-}
-
-.penalty-bottom {
-    width: 55%;
-    height: 14%;
-    bottom: 0;
-    left: 22.5%;
-    border-bottom: 0;
-}
-
-.goal-top {
-    width: 27%;
-    height: 5%;
-    top: 0;
-    left: 36.5%;
-    border-top: 0;
-}
-
-.goal-bottom {
-    width: 27%;
-    height: 5%;
-    bottom: 0;
-    left: 36.5%;
-    border-bottom: 0;
-}
-
+.pitch-line {position:absolute;border:2px solid rgba(255,255,255,.65);pointer-events:none}
+.p-mid {top:50%;width:100%;border-width:2px 0 0}
+.p-circle {width:25%;aspect-ratio:1;left:50%;top:50%;border-radius:50%;transform:translate(-50%,-50%)}
+.p-box-top {top:0;left:22%;width:56%;height:15%;border-top:0}
+.p-box-bottom {bottom:0;left:22%;width:56%;height:15%;border-bottom:0}
+.p-goal-top {top:0;left:37%;width:26%;height:5%;border-top:0}
+.p-goal-bottom {bottom:0;left:37%;width:26%;height:5%;border-bottom:0}
 .player {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 5;
-    cursor: default;
-    transition: top .35s, left .35s;
+    position:absolute;z-index:5;
+    transform:translate(-50%,-50%);
+    display:flex;flex-direction:column;align-items:center;
+    cursor:grab;touch-action:none;
 }
-
-.player-logo {
-    width: clamp(28px, 6vw, 43px);
-    height: clamp(28px, 6vw, 43px);
-    border-radius: 50%;
-    background: #08111c;
-    border: 2px solid #b5ff35;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 4px;
-    box-shadow: 0 2px 9px #07130c;
+.player:active {cursor:grabbing}
+.player-badge {
+    width:clamp(29px,6vw,43px);
+    height:clamp(29px,6vw,43px);
+    background:#091322;border:2px solid var(--green);
+    border-radius:50%;padding:4px;
+    display:grid;place-items:center;
+    box-shadow:0 3px 12px #06100c;
 }
-
-.player-logo img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+.player-badge img {width:100%;height:100%;object-fit:contain}
+.player-position {
+    font-size:8px;font-weight:900;
+    background:#091322;color:white;
+    border:1px solid #b5ff35;
+    padding:3px 5px;border-radius:4px;
+    margin-top:3px;white-space:nowrap;
 }
-
-.player-name {
-    background: #07111d;
-    color: white;
-    padding: 3px 6px;
-    border-radius: 4px;
-    margin-top: 3px;
-    font-size: clamp(8px, 1.8vw, 10px);
-    font-weight: bold;
-    white-space: nowrap;
-    border: 1px solid rgba(181,255,53,.6);
+.pitch-actions {display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
+.quiz-box {padding:25px}
+.quiz-question {font-size:18px;font-weight:800;line-height:1.5;margin:15px 0}
+.quiz-options {display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.quiz-option {
+    padding:13px;text-align:left;
+    background:#1b2a40;color:white;
+    border:1px solid var(--border);
+    border-radius:8px;font-size:11px;
 }
-
-.club-info {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 15px;
-    padding: 12px;
-    background: #19263a;
-    border-radius: 10px;
+.quiz-option:hover {border-color:var(--green)}
+.quiz-option.correct {background:#164a32;border-color:#4ade80}
+.quiz-option.wrong {background:#501c25;border-color:#ef4444}
+.quiz-footer {margin-top:18px;display:flex;justify-content:space-between;align-items:center}
+.squad-grid {display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.squad-player {padding:15px;display:flex;align-items:center;gap:12px}
+.squad-player img {width:38px;height:38px;object-fit:contain}
+.squad-player strong {font-size:11px}
+.squad-player small {display:block;color:var(--muted);font-size:9px;margin-top:4px}
+.newsletter {
+    padding:35px;
+    background:linear-gradient(110deg,#192d2a,#102238);
+    border:1px solid #354d40;
+    border-radius:15px;
+    display:flex;align-items:center;justify-content:space-between;gap:20px;
 }
-
-.club-info img {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
+.newsletter h2 {font:800 28px "Barlow Condensed",sans-serif}
+.newsletter p {font-size:11px;color:#b1c0ce;margin-top:7px}
+.newsletter-form {display:flex;gap:8px;max-width:400px;width:100%}
+.newsletter input {
+    width:100%;min-width:0;
+    background:#0b1422;color:white;
+    border:1px solid var(--border);
+    padding:12px;border-radius:7px;outline:none;
 }
-
-.club-info h3 {
-    font-size: 14px;
+.footer {padding:45px 0 20px;border-top:1px solid var(--border);margin-top:60px}
+.footer-grid {display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}
+.footer p {font-size:11px;color:var(--muted);line-height:1.9;margin-top:15px;max-width:360px}
+.footer h3 {font-size:11px;margin-bottom:15px}
+.footer a {display:block;font-size:10px;color:var(--muted);margin:11px 0}
+.footer a:hover {color:var(--green)}
+.copyright {border-top:1px solid var(--border);margin-top:30px;padding-top:18px;text-align:center;font-size:9px;color:var(--muted)}
+.modal {
+    display:none;position:fixed;inset:0;z-index:200;
+    background:#000b;align-items:center;justify-content:center;padding:20px;
 }
-
-.club-info p {
-    color: #aebbd0;
-    font-size: 11px;
-    margin-top: 4px;
+.modal.show {display:flex}
+.modal-content {
+    width:100%;max-width:500px;
+    background:#101b2c;border:1px solid var(--border);
+    padding:25px;border-radius:15px;
 }
-
-footer {
-    text-align: center;
-    color: #758399;
-    font-size: 11px;
-    padding: 25px 10px;
+.modal-close {float:right;background:none;border:0;color:white;font-size:24px}
+.toast {
+    position:fixed;bottom:25px;right:20px;
+    background:var(--green);color:#08120b;
+    padding:13px 18px;border-radius:8px;
+    font-size:11px;font-weight:800;
+    z-index:300;transform:translateY(100px);
+    transition:.3s;
 }
-
-@media(max-width:500px) {
-    .clubs {
-        gap: 6px;
-    }
-
-    .club {
-        padding: 10px 2px;
-    }
-
-    .club img {
-        width: 43px;
-        height: 43px;
-    }
-
-    .club span {
-        font-size: 9px;
-    }
-
-    .section {
-        padding: 13px;
-    }
-
-    header h1 {
-        font-size: 23px;
-    }
+.toast.show {transform:translateY(0)}
+@media(max-width:850px) {
+    .navlinks {display:none;position:absolute;top:76px;left:0;right:0;background:#0d1726;padding:20px;flex-direction:column;align-items:start;border-bottom:1px solid var(--border)}
+    .navlinks.open {display:flex}
+    .menu-btn {display:grid}
+    .featured {grid-template-columns:1fr}
+    .tactics-layout {grid-template-columns:1fr}
+    .clubs-grid {grid-template-columns:repeat(2,1fr)}
+    .squad-grid {grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px) {
+    .container {padding:0 14px}
+    .section {padding:43px 0}
+    .hero {min-height:470px}
+    .hero-content {padding:65px 0}
+    .hero-stats {gap:20px}
+    .hero-stat strong {font-size:23px}
+    .section-head h2 {font-size:26px}
+    .quick-grid {grid-template-columns:1fr 1fr}
+    .news-grid {grid-template-columns:1fr}
+    .news-image {height:190px}
+    .newsletter {flex-direction:column;align-items:start;padding:23px}
+    .footer-grid {grid-template-columns:1fr 1fr}
+    .footer-grid>div:first-child {grid-column:1/-1}
+    .quiz-options {grid-template-columns:1fr}
+    .match-row {grid-template-columns:45px 1fr auto 1fr 45px;padding:12px 5px}
+    .match-row strong {font-size:9px}
+    .match-row img {width:24px;height:24px}
+    .score {font-size:39px}
 }
 </style>
 </head>
 
 <body>
 
-<header>
-    <h1>OMARSPORTS</h1>
-    <p>FOOTBALL TACTICS BUILDER</p>
-</header>
+<div class="topbar">
+    <span>OMARSPORTS <strong>ULTIMATE FOOTBALL HUB</strong></span>
+    <span>YOUR FOOTBALL. YOUR PASSION.</span>
+</div>
 
-<main class="container">
+<nav class="navbar">
+<div class="container nav-inner">
+    <a href="#home" class="brand">
+        OMAR<span>SPORTS</span>
+        <small>FOOTBALL EXPERIENCE</small>
+    </a>
 
-    <!-- CLUB SELECTOR -->
-    <section class="section">
-        <h2>⚽ Pilih Klub</h2>
+    <div class="navlinks" id="navlinks">
+        <a href="#home">HOME</a>
+        <a href="#matches">MATCHES</a>
+        <a href="#standings">STANDINGS</a>
+        <a href="#clubs">CLUBS</a>
+        <a href="#tactics">TACTICS LAB</a>
+        <a href="#news">NEWS</a>
+        <a href="#quiz">QUIZ</a>
+    </div>
 
-        <div class="clubs">
+    <div class="nav-actions">
+        <button class="icon-btn" onclick="searchSite()" title="Search">⌕</button>
+        <button class="icon-btn menu-btn" onclick="toggleMenu()">☰</button>
+    </div>
+</div>
+</nav>
 
-            <button class="club active" onclick="selectClub('arsenal')" id="club-arsenal">
-                <img src="https://media.api-sports.io/football/teams/42.png" alt="Arsenal">
-                <span>ARSENAL</span>
-            </button>
+<!-- HERO -->
 
-            <button class="club" onclick="selectClub('mancity')" id="club-mancity">
-                <img src="https://media.api-sports.io/football/teams/50.png" alt="Manchester City">
-                <span>MAN CITY</span>
-            </button>
-
-            <button class="club" onclick="selectClub('liverpool')" id="club-liverpool">
-                <img src="https://media.api-sports.io/football/teams/40.png" alt="Liverpool">
-                <span>LIVERPOOL</span>
-            </button>
-
-            <button class="club" onclick="selectClub('astonvilla')" id="club-astonvilla">
-                <img src="https://media.api-sports.io/football/teams/66.png" alt="Aston Villa">
-                <span>ASTON VILLA</span>
-            </button>
-
-        </div>
-    </section>
-
-    <!-- FORMATION -->
-    <section class="section">
-        <h2>📋 Pilih Formasi</h2>
-
-        <div class="formations">
-            <button class="formation active" id="form-433"
-                onclick="changeFormation('433')">4-3-3</button>
-
-            <button class="formation" id="form-4231"
-                onclick="changeFormation('4231')">4-2-3-1</button>
-
-            <button class="formation" id="form-352"
-                onclick="changeFormation('352')">3-5-2</button>
-        </div>
-
-        <p class="description" id="description">
-            Formasi menyerang dengan tiga pemain depan dan dominasi lini tengah.
+<section class="hero" id="home">
+<div class="container">
+    <div class="hero-content">
+        <div class="eyebrow">THE HOME OF FOOTBALL FANS</div>
+        <h1>FEEL THE<br><span>GAME.</span><br>LIVE IT.</h1>
+        <p>
+            Selamat datang di OmarSports. Jelajahi dunia sepak bola,
+            klub favorit, jadwal pertandingan, klasemen, berita,
+            statistik dan bangun strategi tim impianmu.
         </p>
-    </section>
 
-    <!-- PITCH -->
-    <section class="pitch-wrapper">
-
-        <div class="pitch-heading">
-            <h2>🏟️ TACTICAL BOARD</h2>
-            <span id="formation-label">FORMASI 4-3-3</span>
+        <div class="hero-buttons">
+            <a href="#matches" class="btn btn-primary">EXPLORE MATCHES ↗</a>
+            <a href="#tactics" class="btn">BUILD YOUR TACTICS ⚽</a>
         </div>
 
-        <div class="pitch" id="pitch">
-
-            <div class="pitch-line center-line"></div>
-            <div class="pitch-line center-circle"></div>
-            <div class="pitch-line penalty-top"></div>
-            <div class="pitch-line penalty-bottom"></div>
-            <div class="pitch-line goal-top"></div>
-            <div class="pitch-line goal-bottom"></div>
-
-            <div id="players"></div>
-
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <strong>04</strong>
+                <span>FEATURED CLUBS</span>
+            </div>
+            <div class="hero-stat">
+                <strong>08</strong>
+                <span>FORMATIONS</span>
+            </div>
+            <div class="hero-stat">
+                <strong>∞</strong>
+                <span>FOOTBALL PASSION</span>
+            </div>
         </div>
+    </div>
+</div>
+</section>
 
-        <div class="club-info">
-            <img id="selected-logo"
-                src="https://media.api-sports.io/football/teams/42.png"
-                alt="Selected Club">
-            <div>
-                <h3 id="selected-name">ARSENAL</h3>
-                <p id="selected-formation">Starting XI • 4-3-3</p>
+<div class="ticker">
+    <div class="ticker-label">FOOTBALL UPDATE</div>
+    <div class="ticker-track">
+        <span>⚽ WELCOME TO OMARSPORTS</span>
+        <span>🏆 PREMIER LEAGUE</span>
+        <span>🔥 TACTICS LAB IS READY</span>
+        <span>⚽ FOOTBALL NEWS & ANALYSIS</span>
+        <span>🏆 CHAMPIONS LEAGUE</span>
+        <span>⚽ WELCOME TO OMARSPORTS</span>
+        <span>🏆 PREMIER LEAGUE</span>
+    </div>
+</div>
+
+<!-- DASHBOARD -->
+
+<section class="section" id="dashboard">
+<div class="container">
+    <div class="section-head">
+        <div>
+            <div class="eyebrow">FOOTBALL OVERVIEW</div>
+            <h2>THE MATCHDAY HUB</h2>
+        </div>
+        <span class="tag">DEMO DASHBOARD</span>
+    </div>
+
+    <div class="featured">
+        <div class="card featured-match">
+            <div class="match-meta">
+                <span class="tag">FEATURED MATCH</span>
+                <span class="tag">DEMO</span>
+            </div>
+
+            <div class="match-teams">
+                <div>
+                    <img class="team-logo"
+                    src="https://media.api-sports.io/football/teams/42.png">
+                    <div class="team-name">ARSENAL</div>
+                    <div class="match-time">HOME</div>
+                </div>
+
+                <div>
+                    <div class="score">VS</div>
+                    <div class="match-time">PREMIER LEAGUE</div>
+                </div>
+
+                <div>
+                    <img class="team-logo"
+                    src="https://media.api-sports.io/football/teams/50.png">
+                    <div class="team-name">MAN CITY</div>
+                    <div class="match-time">AWAY</div>
+                </div>
+            </div>
+
+            <div class="match-note">
+                Contoh tampilan pertandingan • Bukan jadwal atau skor live
+            </div>
+
+            <div class="match-bottom">
+                <span class="muted" style="font-size:10px">MATCH CENTER</span>
+                <a href="#matches" class="btn btn-primary">VIEW MATCHES →</a>
             </div>
         </div>
 
-    </section>
+        <div class="quick-grid">
+            <div class="card quick-card">
+                <div class="small-title">⚽ MATCH CENTER</div>
+                <div class="number green">01</div>
+                <p>Match information</p>
+            </div>
 
-</main>
+            <div class="card quick-card">
+                <div class="small-title">🏆 LEAGUE</div>
+                <div class="number">PL</div>
+                <p>League standings</p>
+            </div>
 
-<footer>
-    © 2026 OMARSPORTS | FOOTBALL TACTICS BUILDER
-</footer>
+            <div class="card quick-card">
+                <div class="small-title">🧠 TACTICS</div>
+                <div class="number">08</div>
+                <p>Formation options</p>
+            </div>
 
-<script>
+            <div class="card quick-card">
+                <div class="small-title">🛡️ CLUBS</div>
+                <div class="number">04</div>
+                <p>Featured teams</p>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
 
-/* CLUB DATABASE */
+<!-- MATCHES -->
 
-const clubs = {
-    arsenal: {
-        name: "ARSENAL",
-        logo: "https://media.api-sports.io/football/teams/42.png"
-    },
-
-    mancity: {
-        name: "MANCHESTER CITY",
-        logo: "https://media.api-sports.io/football/teams/50.png"
-    },
-
-    liverpool: {
-        name: "LIVERPOOL",
-        logo: "https://media.api-sports.io/football/teams/40.png"
-    },
-
-    astonvilla: {
-        name: "ASTON VILLA",
-        logo: "https://media.api-sports.io/football/teams/66.png"
-    }
-};
-
-/* FORMATION DATABASE */
-
-const formations = {
-
-    "433": {
-        description:
-        "Formasi menyerang dengan tiga pemain depan. Cocok untuk pressing tinggi dan permainan sayap.",
-
-        positions: [
-            ["GK", 88, 50],
-            ["LB", 72, 15],
-            ["CB", 76, 38],
-            ["CB", 76, 62],
-            ["RB", 72, 85],
-            ["CM", 54, 28],
-            ["CDM", 60, 50],
-            ["CM", 54, 72],
-            ["LW", 25, 17],
-            ["ST", 17, 50],
-            ["RW", 25, 83]
-        ]
-    },
-
-    "4231": {
-        description:
-        "Formasi seimbang dengan dua gelandang bertahan dan satu playmaker di belakang striker.",
-
-        positions: [
-            ["GK", 88, 50],
-            ["LB", 72, 15],
-            ["CB", 76, 38],
-            ["CB", 76, 62],
-            ["RB", 72, 85],
-            ["CDM", 60, 35],
-            ["CDM", 60, 65],
-            ["LM", 37, 15],
-            ["CAM", 39, 50],
-            ["RM", 37, 85],
-            ["ST", 17, 50]
-        ]
-    },
-
-    "352": {
-        description:
-        "Formasi dominasi lini tengah dengan tiga bek, dua wing-back, dan dua striker.",
-
-        positions: [
-            ["GK", 88, 50],
-            ["CB", 76, 22],
-            ["CB", 79, 50],
-            ["CB", 76, 78],
-            ["LWB", 48, 12],
-            ["CM", 55, 32],
-            ["CDM", 60, 50],
-            ["CM", 55, 68],
-            ["RWB", 48, 88],
-            ["ST", 19, 35],
-            ["ST", 19, 65]
-        ]
-    }
-
-};
-
-let selectedClub = "arsenal";
-let currentFormation = "433";
-
-/* SELECT CLUB */
-
-function selectClub(key) {
-
-    if (!clubs[key]) return;
-
-    selectedClub = key;
-
-    document.querySelectorAll(".club").forEach(btn => {
-        btn.classList.remove("active");
-    });
-
-    document.getElementById("club-" + key)
-        .classList.add("active");
-
-    document.getElementById("selected-name").textContent =
-        clubs[key].name;
-
-    document.getElementById("selected-logo").src =
-        clubs[key].logo;
-
-    renderPlayers();
-}
-
-/* CHANGE FORMATION */
-
-function changeFormation(key) {
-
-    if (!formations[key]) return;
-
-    currentFormation = key;
-
-    document.querySelectorAll(".formation").forEach(btn => {
-        btn.classList.remove("active");
-    });
-
-    document.getElementById("form-" + key)
-        .classList.add("active");
-
-    document.getElementById("description").textContent =
-        formations[key].description;
-
-    document.getElementById("formation-label").textContent =
-        "FORMASI " + key.replace("4231", "4-2-3-1")
-                        .replace("433", "4-3-3")
-                        .replace("352", "3-5-2");
-
-    document.getElementById("selected-formation").textContent =
-        "Starting XI • " +
-        key.replace("4231", "4-2-3-1")
-           .replace("433", "4-3-3")
-           .replace("352", "3-5-2");
-
-    renderPlayers();
-}
-
-/* RENDER PLAYERS */
-
-function renderPlayers() {
-
-    const container = document.getElementById("players");
-
-    container.innerHTML = "";
-
-    const club = clubs[selectedClub];
-
-    formations[currentFormation].positions.forEach((pos, index) => {
-
-        const player = document.createElement("div");
-
-        player.className = "player";
-
-        player.style.top = pos[1] + "%";
-        player.style.left = pos[2] + "%";
-
-        const logo = document.createElement("div");
-        logo.className = "player-logo";
-
-        const img = document.createElement("img");
-        img.src = club.logo;
-        img.alt = club.name;
-        img.loading = "lazy";
-
-        logo.appendChild(img);
-
-        const name = document.createElement("span");
-        name.className = "player-name";
-        name.textContent = pos[0];
-
-        player.appendChild(logo);
-        player.appendChild(name);
-
-        container.appendChild(player);
-
-    });
-
-}
-
-/* INITIALIZE */
-
-renderPlayers();
-
-</script>
-
-</body>
-</html>
+<s
