@@ -1,854 +1,625 @@
+
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OmarSports - Portal Sepak Bola Interaktif</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        darkBg: '#090d16',
-                        darkCard: '#0f172a',
-                        darkBorder: '#1e293b',
-                        neonGreen: '#00ff87',
-                        accentGreen: '#10b981',
-                        electricBlue: '#38bdf8',
-                    },
-                    fontFamily: {
-                        sans: ['Poppins', 'sans-serif'],
-                    },
-                    boxShadow: {
-                        neon: '0 0 20px rgba(0, 255, 135, 0.35)',
-                        blueGlow: '0 0 20px rgba(56, 189, 248, 0.35)',
-                    }
-                }
-            }
-        }
-    </script>
-    <!-- Google Fonts Poppins -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        /* Custom Custom Scrollbar & Glassmorphism Utilities */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #090d16;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #1e293b;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #00ff87;
-        }
-        
-        .glass-panel {
-            background: rgba(15, 23, 42, 0.75);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OmarSports - Tactics Builder</title>
 
-        .glass-nav {
-            background: rgba(9, 13, 22, 0.85);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        /* Continuous Animations */
-        @keyframes marquee {
-            0% { transform: translateX(0%); }
-            100% { transform: translateX(-50%); }
-        }
-        .animate-marquee {
-            display: flex;
-            width: 200%;
-            animation: marquee 25s linear infinite;
-        }
-        .animate-marquee:hover {
-            animation-play-state: paused;
-        }
+body {
+    font-family: Arial, sans-serif;
+    background: #080d16;
+    color: white;
+    min-height: 100vh;
+}
 
-        @keyframes pulseGlow {
-            0%, 100% { opacity: 0.6; filter: drop-shadow(0 0 10px rgba(0,255,135,0.4)); }
-            50% { opacity: 1; filter: drop-shadow(0 0 25px rgba(0,255,135,0.8)); }
-        }
-        .glow-pulse {
-            animation: pulseGlow 3s infinite ease-in-out;
-        }
+header {
+    padding: 22px 15px;
+    text-align: center;
+    background: #101a2b;
+    border-bottom: 2px solid #b5ff35;
+}
 
-        /* Modal Overlay Transition */
-        .modal-active {
-            opacity: 1 !important;
-            pointer-events: auto !important;
-            transform: scale(1) !important;
-        }
-    </style>
+header h1 {
+    color: #b5ff35;
+    font-size: 27px;
+    letter-spacing: 2px;
+}
+
+header p {
+    color: #9ca9bb;
+    font-size: 12px;
+    margin-top: 7px;
+}
+
+.container {
+    max-width: 950px;
+    margin: auto;
+    padding: 20px 15px;
+}
+
+.section {
+    background: #111c2d;
+    padding: 18px;
+    border-radius: 14px;
+    margin-bottom: 20px;
+    border: 1px solid #26364d;
+}
+
+.section h2 {
+    font-size: 15px;
+    margin-bottom: 15px;
+    color: #b5ff35;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.clubs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.club {
+    background: #19263a;
+    border: 2px solid transparent;
+    color: white;
+    border-radius: 12px;
+    padding: 12px 5px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.club:hover {
+    background: #263750;
+}
+
+.club.active {
+    border-color: #b5ff35;
+    background: #263b27;
+}
+
+.club img {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    display: block;
+    margin: auto auto 8px;
+}
+
+.club span {
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.formations {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.formation {
+    background: #19263a;
+    color: white;
+    border: 1px solid #35445b;
+    border-radius: 9px;
+    padding: 13px 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.formation.active {
+    background: #b5ff35;
+    color: #101820;
+    border-color: #b5ff35;
+}
+
+.description {
+    color: #aebbd0;
+    font-size: 12px;
+    line-height: 1.6;
+    margin-top: 13px;
+}
+
+.pitch-wrapper {
+    padding: 12px;
+    background: #111c2d;
+    border-radius: 14px;
+    border: 1px solid #26364d;
+}
+
+.pitch-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.pitch-heading h2 {
+    font-size: 15px;
+    color: #b5ff35;
+}
+
+.pitch-heading span {
+    font-size: 11px;
+    color: #aebbd0;
+}
+
+.pitch {
+    width: 100%;
+    max-width: 650px;
+    aspect-ratio: 0.72;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+    background: repeating-linear-gradient(
+        0deg,
+        #16804a 0px,
+        #16804a 65px,
+        #147442 65px,
+        #147442 130px
+    );
+    border: 3px solid white;
+}
+
+.pitch-line {
+    position: absolute;
+    border: 2px solid rgba(255,255,255,.85);
+    pointer-events: none;
+}
+
+.center-line {
+    width: 100%;
+    top: 50%;
+    border-width: 2px 0 0;
+}
+
+.center-circle {
+    width: 25%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.penalty-top {
+    width: 55%;
+    height: 14%;
+    top: 0;
+    left: 22.5%;
+    border-top: 0;
+}
+
+.penalty-bottom {
+    width: 55%;
+    height: 14%;
+    bottom: 0;
+    left: 22.5%;
+    border-bottom: 0;
+}
+
+.goal-top {
+    width: 27%;
+    height: 5%;
+    top: 0;
+    left: 36.5%;
+    border-top: 0;
+}
+
+.goal-bottom {
+    width: 27%;
+    height: 5%;
+    bottom: 0;
+    left: 36.5%;
+    border-bottom: 0;
+}
+
+.player {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 5;
+    cursor: default;
+    transition: top .35s, left .35s;
+}
+
+.player-logo {
+    width: clamp(28px, 6vw, 43px);
+    height: clamp(28px, 6vw, 43px);
+    border-radius: 50%;
+    background: #08111c;
+    border: 2px solid #b5ff35;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    box-shadow: 0 2px 9px #07130c;
+}
+
+.player-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.player-name {
+    background: #07111d;
+    color: white;
+    padding: 3px 6px;
+    border-radius: 4px;
+    margin-top: 3px;
+    font-size: clamp(8px, 1.8vw, 10px);
+    font-weight: bold;
+    white-space: nowrap;
+    border: 1px solid rgba(181,255,53,.6);
+}
+
+.club-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 15px;
+    padding: 12px;
+    background: #19263a;
+    border-radius: 10px;
+}
+
+.club-info img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.club-info h3 {
+    font-size: 14px;
+}
+
+.club-info p {
+    color: #aebbd0;
+    font-size: 11px;
+    margin-top: 4px;
+}
+
+footer {
+    text-align: center;
+    color: #758399;
+    font-size: 11px;
+    padding: 25px 10px;
+}
+
+@media(max-width:500px) {
+    .clubs {
+        gap: 6px;
+    }
+
+    .club {
+        padding: 10px 2px;
+    }
+
+    .club img {
+        width: 43px;
+        height: 43px;
+    }
+
+    .club span {
+        font-size: 9px;
+    }
+
+    .section {
+        padding: 13px;
+    }
+
+    header h1 {
+        font-size: 23px;
+    }
+}
+</style>
 </head>
-<body class="bg-darkBg text-slate-100 font-sans min-h-screen overflow-x-hidden selection:bg-neonGreen selection:text-black">
 
-    <!-- HEADER / NAVIGATION -->
-    <header class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <!-- Logo -->
-            <a href="#" class="flex items-center gap-3 group">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-accentGreen to-electricBlue flex items-center justify-center text-black font-extrabold text-xl shadow-neon group-hover:rotate-12 transition-transform duration-300">
-                    <i class="fa-solid fa-futbol"></i>
-                </div>
-                <span class="text-2xl font-black tracking-wider text-white">
-                    OMAR<span class="text-neonGreen">SPORTS</span>
-                </span>
-            </a>
+<body>
 
-            <!-- Desktop Nav Links -->
-            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
-                <a href="#live-scores" class="hover:text-neonGreen transition-colors duration-200 flex items-center gap-2">
-                    <span class="w-2 h-2 rounded-full bg-neonGreen animate-ping"></span> Live Score
-                </a>
-                <a href="#standings" class="hover:text-neonGreen transition-colors duration-200">Klasemen</a>
-                <a href="#tactics-builder" class="hover:text-neonGreen transition-colors duration-200">Taktik & Formasi</a>
-                <a href="#news" class="hover:text-neonGreen transition-colors duration-200">Berita</a>
-            </nav>
+<header>
+    <h1>OMARSPORTS</h1>
+    <p>FOOTBALL TACTICS BUILDER</p>
+</header>
 
-            <!-- Quick Action Button -->
-            <div class="hidden md:flex items-center gap-4">
-                <button onclick="scrollToMatch()" class="bg-gradient-to-r from-neonGreen to-emerald-500 text-darkBg font-bold px-5 py-2.5 rounded-xl hover:shadow-neon hover:scale-105 transition-all duration-300 flex items-center gap-2 text-sm">
-                    <i class="fa-solid fa-bolt"></i> Pantau Live Match
-                </button>
-            </div>
+<main class="container">
 
-            <!-- Mobile Hamburger Button -->
-            <button id="mobile-menu-btn" class="md:hidden text-2xl text-slate-300 hover:text-white focus:outline-none">
-                <i class="fa-solid fa-bars"></i>
+    <!-- CLUB SELECTOR -->
+    <section class="section">
+        <h2>⚽ Pilih Klub</h2>
+
+        <div class="clubs">
+
+            <button class="club active" onclick="selectClub('arsenal')" id="club-arsenal">
+                <img src="https://media.api-sports.io/football/teams/42.png" alt="Arsenal">
+                <span>ARSENAL</span>
             </button>
-        </div>
 
-        <!-- Mobile Drawer Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-darkCard border-b border-darkBorder px-6 py-4 space-y-4">
-            <a href="#live-scores" class="block text-slate-200 hover:text-neonGreen py-2">Live Score</a>
-            <a href="#standings" class="block text-slate-200 hover:text-neonGreen py-2">Klasemen Liga</a>
-            <a href="#tactics-builder" class="block text-slate-200 hover:text-neonGreen py-2">Taktik & Formasi</a>
-            <a href="#news" class="block text-slate-200 hover:text-neonGreen py-2">Berita Terbaru</a>
-        </div>
-    </header>
+            <button class="club" onclick="selectClub('mancity')" id="club-mancity">
+                <img src="https://media.api-sports.io/football/teams/50.png" alt="Manchester City">
+                <span>MAN CITY</span>
+            </button>
 
-    <!-- HERO SECTION -->
-    <section class="pt-32 pb-16 relative overflow-hidden">
-        <!-- Ambient Glowing Background Orbs -->
-        <div class="absolute top-1/4 left-10 w-96 h-96 bg-accentGreen/15 rounded-full filter blur-[120px] pointer-events-none"></div>
-        <div class="absolute bottom-10 right-10 w-96 h-96 bg-electricBlue/15 rounded-full filter blur-[120px] pointer-events-none"></div>
+            <button class="club" onclick="selectClub('liverpool')" id="club-liverpool">
+                <img src="https://media.api-sports.io/football/teams/40.png" alt="Liverpool">
+                <span>LIVERPOOL</span>
+            </button>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid lg:grid-cols-12 gap-12 items-center">
-                
-                <!-- Hero Left Content -->
-                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-panel border border-neonGreen/30 text-neonGreen text-xs font-semibold tracking-wide uppercase">
-                        <i class="fa-solid fa-fire text-amber-400"></i> Platform Olahraga Interaktif #1
-                    </div>
-                    
-                    <h1 class="text-4xl sm:text-6xl font-extrabold leading-tight text-white">
-                        Sensasi Sepak Bola <br>
-                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-neonGreen via-emerald-400 to-electricBlue">
-                            Real-Time & Presisi
-                        </span>
-                    </h1>
-                    
-                    <p class="text-slate-400 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                        Pantau live score liga top dunia, analisa statistik pertandingan, uji taktik tim favoritmu, dan nikmati berita eksklusif hanya di **OmarSports**.
-                    </p>
+            <button class="club" onclick="selectClub('astonvilla')" id="club-astonvilla">
+                <img src="https://media.api-sports.io/football/teams/66.png" alt="Aston Villa">
+                <span>ASTON VILLA</span>
+            </button>
 
-                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
-                        <a href="#live-scores" class="bg-neonGreen text-darkBg font-bold px-8 py-3.5 rounded-xl shadow-neon hover:bg-emerald-300 transition-all duration-300 flex items-center gap-2">
-                            <i class="fa-solid fa-play"></i> Mulai Eksplorasi
-                        </a>
-                        <a href="#tactics-builder" class="glass-panel text-white font-semibold px-8 py-3.5 rounded-xl hover:border-electricBlue transition-all duration-300 flex items-center gap-2">
-                            <i class="fa-solid fa-chess-board text-electricBlue"></i> Coba Simulator Taktik
-                        </a>
-                    </div>
-
-                    <!-- Quick Metrics -->
-                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-darkBorder max-w-lg mx-auto lg:mx-0">
-                        <div>
-                            <p class="text-2xl sm:text-3xl font-extrabold text-white">500+</p>
-                            <p class="text-xs text-slate-400 mt-1">Liga & Turnamen</p>
-                        </div>
-                        <div>
-                            <p class="text-2xl sm:text-3xl font-extrabold text-neonGreen">99.9%</p>
-                            <p class="text-xs text-slate-400 mt-1">Akurasi Live Data</p>
-                        </div>
-                        <div>
-                            <p class="text-2xl sm:text-3xl font-extrabold text-electricBlue">1.2M</p>
-                            <p class="text-xs text-slate-400 mt-1">Fans Aktif</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Hero Right Card Display -->
-                <div class="lg:col-span-5 relative flex justify-center">
-                    <div class="w-full max-w-md glass-panel p-6 rounded-2xl relative shadow-2xl border-gradient">
-                        <div class="flex justify-between items-center pb-4 mb-4 border-b border-darkBorder">
-                            <span class="text-xs font-semibold text-slate-400 uppercase tracking-widest flex items-center gap-2">
-                                <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span> Featured Match
-                            </span>
-                            <span class="text-xs bg-accentGreen/20 text-neonGreen font-bold px-3 py-1 rounded-full">UEFA Champions League</span>
-                        </div>
-
-                        <!-- Match Card Content -->
-                        <div class="flex justify-between items-center my-6">
-                            <!-- Team 1 -->
-                            <div class="text-center flex-1">
-                                <div class="w-16 h-16 bg-slate-800 rounded-full mx-auto mb-2 flex items-center justify-center p-2 border border-slate-700 shadow-md">
-                                    <i class="fa-solid fa-shield-halved text-2xl text-blue-400"></i>
-                                </div>
-                                <h4 class="font-bold text-sm">Real Madrid</h4>
-                                <span class="text-xs text-slate-400">Home</span>
-                            </div>
-
-                            <!-- Score -->
-                            <div class="text-center px-4">
-                                <span class="text-3xl font-black tracking-wider text-neonGreen">2 - 1</span>
-                                <div class="mt-1 text-[11px] font-medium bg-red-500/20 text-red-400 px-2.5 py-0.5 rounded-full inline-block">
-                                    78' BABAK 2
-                                </div>
-                            </div>
-
-                            <!-- Team 2 -->
-                            <div class="text-center flex-1">
-                                <div class="w-16 h-16 bg-slate-800 rounded-full mx-auto mb-2 flex items-center justify-center p-2 border border-slate-700 shadow-md">
-                                    <i class="fa-solid fa-shield text-2xl text-red-400"></i>
-                                </div>
-                                <h4 class="font-bold text-sm">Arsenal</h4>
-                                <span class="text-xs text-slate-400">Away</span>
-                            </div>
-                        </div>
-
-                        <!-- Match Goal Events -->
-                        <div class="bg-darkBg/60 rounded-xl p-3 text-xs space-y-2 border border-slate-800">
-                            <div class="flex justify-between text-slate-300">
-                                <span><i class="fa-solid fa-football text-neonGreen mr-1"></i> V. Junior (24')</span>
-                                <span class="text-slate-500">1 - 0</span>
-                            </div>
-                            <div class="flex justify-between text-slate-300">
-                                <span class="text-slate-500">1 - 1</span>
-                                <span>B. Saka (52') <i class="fa-solid fa-football text-neonGreen ml-1"></i></span>
-                            </div>
-                            <div class="flex justify-between text-slate-300">
-                                <span><i class="fa-solid fa-football text-neonGreen mr-1"></i> J. Bellingham (71')</span>
-                                <span class="text-slate-500">2 - 1</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- Marquee Ticker -->
-        <div class="mt-16 bg-darkCard/90 border-y border-darkBorder py-3 overflow-hidden relative">
-            <div class="animate-marquee whitespace-nowrap flex gap-12 text-sm text-slate-300 font-medium">
-                <span><i class="fa-solid fa-star text-amber-400 mr-2"></i> UCL: Real Madrid vs Arsenal (2-1)</span>
-                <span><i class="fa-solid fa-fire text-neonGreen mr-2"></i> Premier League: Man City vs Liverpool Minggu 22:30 WIB</span>
-                <span><i class="fa-solid fa-trophy text-electricBlue mr-2"></i> La Liga: Barcelona puncaki klasemen sementara!</span>
-                <span><i class="fa-solid fa-newspaper text-amber-400 mr-2"></i> Transfer: Mbappé cetak gol spektakuler pekan ini!</span>
-                <!-- Repeat for smooth loop -->
-                <span><i class="fa-solid fa-star text-amber-400 mr-2"></i> UCL: Real Madrid vs Arsenal (2-1)</span>
-                <span><i class="fa-solid fa-fire text-neonGreen mr-2"></i> Premier League: Man City vs Liverpool Minggu 22:30 WIB</span>
-                <span><i class="fa-solid fa-trophy text-electricBlue mr-2"></i> La Liga: Barcelona puncaki klasemen sementara!</span>
-                <span><i class="fa-solid fa-newspaper text-amber-400 mr-2"></i> Transfer: Mbappé cetak gol spektakuler pekan ini!</span>
-            </div>
         </div>
     </section>
 
-    <!-- LIVE SCORE DASHBOARD -->
-    <section id="live-scores" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+    <!-- FORMATION -->
+    <section class="section">
+        <h2>📋 Pilih Formasi</h2>
+
+        <div class="formations">
+            <button class="formation active" id="form-433"
+                onclick="changeFormation('433')">4-3-3</button>
+
+            <button class="formation" id="form-4231"
+                onclick="changeFormation('4231')">4-2-3-1</button>
+
+            <button class="formation" id="form-352"
+                onclick="changeFormation('352')">3-5-2</button>
+        </div>
+
+        <p class="description" id="description">
+            Formasi menyerang dengan tiga pemain depan dan dominasi lini tengah.
+        </p>
+    </section>
+
+    <!-- PITCH -->
+    <section class="pitch-wrapper">
+
+        <div class="pitch-heading">
+            <h2>🏟️ TACTICAL BOARD</h2>
+            <span id="formation-label">FORMASI 4-3-3</span>
+        </div>
+
+        <div class="pitch" id="pitch">
+
+            <div class="pitch-line center-line"></div>
+            <div class="pitch-line center-circle"></div>
+            <div class="pitch-line penalty-top"></div>
+            <div class="pitch-line penalty-bottom"></div>
+            <div class="pitch-line goal-top"></div>
+            <div class="pitch-line goal-bottom"></div>
+
+            <div id="players"></div>
+
+        </div>
+
+        <div class="club-info">
+            <img id="selected-logo"
+                src="https://media.api-sports.io/football/teams/42.png"
+                alt="Selected Club">
             <div>
-                <h2 class="text-2xl sm:text-3xl font-extrabold text-white flex items-center gap-3">
-                    <span class="w-3 h-3 rounded-full bg-red-500 animate-pulse"></span>
-                    Live Match Dashboard
-                </h2>
-                <p class="text-slate-400 text-sm mt-1">Pantau pergerakan skor dan statistik langsung dari lapangan</p>
-            </div>
-
-            <!-- League Filter Buttons -->
-            <div class="flex flex-wrap gap-2" id="league-filters">
-                <button onclick="filterMatches('all')" class="filter-btn active bg-neonGreen text-darkBg font-bold px-4 py-2 rounded-lg text-xs transition-all">Semua</button>
-                <button onclick="filterMatches('ucl')" class="filter-btn glass-panel text-slate-300 hover:text-white px-4 py-2 rounded-lg text-xs transition-all">Champions League</button>
-                <button onclick="filterMatches('epl')" class="filter-btn glass-panel text-slate-300 hover:text-white px-4 py-2 rounded-lg text-xs transition-all">Premier League</button>
-                <button onclick="filterMatches('laliga')" class="filter-btn glass-panel text-slate-300 hover:text-white px-4 py-2 rounded-lg text-xs transition-all">La Liga</button>
+                <h3 id="selected-name">ARSENAL</h3>
+                <p id="selected-formation">Starting XI • 4-3-3</p>
             </div>
         </div>
 
-        <!-- Matches Grid -->
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="matches-container">
-            <!-- Match cards injected via Javascript -->
-        </div>
     </section>
 
-    <!-- INTERACTIVE STANDINGS -->
-    <section id="standings" class="py-16 bg-slate-950/60 border-y border-darkBorder">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-10">
-                <h2 class="text-3xl font-extrabold text-white">Klasemen Liga Musim 2026</h2>
-                <p class="text-slate-400 text-sm mt-2">Data poin, statistik selisih gol, dan posisi peringkat terbaru</p>
-            </div>
+</main>
 
-            <!-- Standings League Tab Switcher -->
-            <div class="flex justify-center mb-8">
-                <div class="glass-panel p-1.5 rounded-xl flex gap-2 overflow-x-auto max-w-full">
-                    <button onclick="switchStandings('epl')" id="tab-epl" class="tab-btn bg-accentGreen text-darkBg font-bold px-5 py-2.5 rounded-lg text-xs transition-all">Premier League</button>
-                    <button onclick="switchStandings('laliga')" id="tab-laliga" class="tab-btn text-slate-400 hover:text-white font-medium px-5 py-2.5 rounded-lg text-xs transition-all">La Liga</button>
-                    <button onclick="switchStandings('seriea')" id="tab-seriea" class="tab-btn text-slate-400 hover:text-white font-medium px-5 py-2.5 rounded-lg text-xs transition-all">Serie A</button>
-                </div>
-            </div>
+<footer>
+    © 2026 OMARSPORTS | FOOTBALL TACTICS BUILDER
+</footer>
 
-            <!-- Standings Table Card -->
-            <div class="glass-panel rounded-2xl overflow-hidden shadow-xl">
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left text-sm">
-                        <thead class="bg-darkCard/90 text-slate-400 text-xs uppercase tracking-wider border-b border-darkBorder">
-                            <tr>
-                                <th class="py-4 px-6">Pos</th>
-                                <th class="py-4 px-6">Klub</th>
-                                <th class="py-4 px-3 text-center">Main</th>
-                                <th class="py-4 px-3 text-center">M</th>
-                                <th class="py-4 px-3 text-center">S</th>
-                                <th class="py-4 px-3 text-center">K</th>
-                                <th class="py-4 px-3 text-center">SG</th>
-                                <th class="py-4 px-6 text-center font-bold text-white">Poin</th>
-                            </tr>
-                        </thead>
-                        <tbody id="standings-body" class="divide-y divide-darkBorder/60 font-medium">
-                            <!-- Populated via Javascript -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </section>
+<script>
 
-    <!-- INTERACTIVE TACTICS BUILDER GAME -->
-    <section id="tactics-builder" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-12 gap-8 items-center">
-            
-            <!-- Tactics Controls -->
-            <div class="lg:col-span-5 space-y-6">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-electricBlue/10 text-electricBlue text-xs font-semibold">
-                    <i class="fa-solid fa-gamepad"></i> Fitur Interaktif Mini-Game
-                </div>
-                <h2 class="text-3xl font-extrabold text-white">OmarSports Tactics Builder</h2>
-                <p class="text-slate-400 text-sm leading-relaxed">
-                    Atur strategi dan formasi tim impianmu secara langsung di lapangan virtual interaktif. Pilih skema formasi favorit untuk melihat persebaran pemain!
-                </p>
+/* CLUB DATABASE */
 
-                <!-- Select Formation Option -->
-                <div class="glass-panel p-5 rounded-xl space-y-4">
-                    <label class="text-xs font-bold uppercase tracking-wider text-slate-300 block">
-                        Pilih Formasi Taktik:
-                    </label>
-                    <div class="grid grid-cols-3 gap-3">
-                        <button onclick="changeFormation('433')" id="form-433" class="formation-btn active border border-neonGreen bg-neonGreen/10 text-neonGreen font-bold py-2.5 rounded-lg text-xs transition-all">4 - 3 - 3</button>
-                        <button onclick="changeFormation('4231')" id="form-4231" class="formation-btn glass-panel text-slate-300 hover:text-white font-medium py-2.5 rounded-lg text-xs transition-all">4 - 2 - 3 - 1</button>
-                        <button onclick="changeFormation('352')" id="form-352" class="formation-btn glass-panel text-slate-300 hover:text-white font-medium py-2.5 rounded-lg text-xs transition-all">3 - 5 - 2</button>
-                    </div>
+const clubs = {
+    arsenal: {
+        name: "ARSENAL",
+        logo: "https://media.api-sports.io/football/teams/42.png"
+    },
 
-                    <div class="pt-4 border-t border-darkBorder">
-                        <p class="text-xs text-slate-400 mb-2">Gaya Permainan Rekomendasi:</p>
-                        <div id="tactics-desc" class="text-xs text-slate-200 bg-darkBg/60 p-3 rounded-lg border border-slate-800">
-                             High Pressing & Attacking Football. Mengandalkan keunggulan dua sayap cepat dan playmaker kreatif.
-                        </div>
-                    </div>
-                </div>
-            </div>
+    mancity: {
+        name: "MANCHESTER CITY",
+        logo: "https://media.api-sports.io/football/teams/50.png"
+    },
 
-            <!-- Virtual Pitch Display -->
-            <div class="lg:col-span-7">
-                <div class="relative w-full aspect-[4/3] bg-emerald-900/40 rounded-2xl border-2 border-emerald-500/30 overflow-hidden shadow-2xl p-4 flex flex-col justify-between" style="background-image: radial-gradient(rgba(16, 185, 129, 0.15) 1px, transparent 0); background-size: 20px 20px;">
-                    
-                    <!-- Pitch Marking lines -->
-                    <div class="absolute inset-4 border border-white/20 rounded-lg pointer-events-none"></div>
-                    <div class="absolute top-1/2 left-4 right-4 h-0.5 bg-white/20 -translate-y-1/2 pointer-events-none"></div>
-                    <div class="absolute top-1/2 left-1/2 w-28 h-28 border border-white/20 rounded-full -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+    liverpool: {
+        name: "LIVERPOOL",
+        logo: "https://media.api-sports.io/football/teams/40.png"
+    },
 
-                    <!-- Interactive Players Container -->
-                    <div id="pitch-players" class="relative w-full h-full z-10 transition-all duration-500">
-                        <!-- Player nodes dynamically placed by JS -->
-                    </div>
-                </div>
-            </div>
+    astonvilla: {
+        name: "ASTON VILLA",
+        logo: "https://media.api-sports.io/football/teams/66.png"
+    }
+};
 
-        </div>
-    </section>
+/* FORMATION DATABASE */
 
-    <!-- NEWS & ARTICLES SECTION -->
-    <section id="news" class="py-16 bg-slate-950/60 border-t border-darkBorder">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
-                <div>
-                    <h2 class="text-3xl font-extrabold text-white">Berita Bola Terhangat</h2>
-                    <p class="text-slate-400 text-sm mt-1">Kabar terkini, analisis mendalam, dan rumor transfer terbaru</p>
-                </div>
-            </div>
+const formations = {
 
-            <!-- News Grid -->
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Article Card 1 -->
-                <div onclick="openArticle('Analisis Taktik: Kunci Kemenangan Pertandingan El Clasico', 'Taktik transisi cepat menjadi pembeda utama pada laga sengit malam tadi...')" class="glass-panel rounded-2xl overflow-hidden hover:-translate-y-2 hover:shadow-neon transition-all duration-300 cursor-pointer group">
-                    <div class="h-48 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=600&q=80" alt="News Image" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        <span class="absolute top-3 left-3 bg-darkBg/80 text-neonGreen text-[10px] font-bold px-2.5 py-1 rounded-md border border-neonGreen/30">
-                            ANALISIS
-                        </span>
-                    </div>
-                    <div class="p-6">
-                        <span class="text-xs text-slate-400"><i class="fa-regular fa-clock mr-1"></i> 2 Jam lalu</span>
-                        <h3 class="text-base font-bold text-white mt-2 group-hover:text-neonGreen transition-colors">
-                            Analisis Taktik: Kunci Kemenangan Pertandingan El Clasico Pekan Ini
-                        </h3>
-                        <p class="text-xs text-slate-400 mt-2 line-clamp-2">
-                            Bagaimana keunggulan lini tengah dan pressing tinggi mampu melumpuhkan serangan balik lawan...
-                        </p>
-                    </div>
-                </div>
+    "433": {
+        description:
+        "Formasi menyerang dengan tiga pemain depan. Cocok untuk pressing tinggi dan permainan sayap.",
 
-                <!-- Article Card 2 -->
-                <div onclick="openArticle('Bintang Muda Bersinar di Champions League', 'Penampilan luar biasa ditunjukkan oleh pemain berusia 19 tahun ini...')" class="glass-panel rounded-2xl overflow-hidden hover:-translate-y-2 hover:shadow-blueGlow transition-all duration-300 cursor-pointer group">
-                    <div class="h-48 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=600&q=80" alt="News Image" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        <span class="absolute top-3 left-3 bg-darkBg/80 text-electricBlue text-[10px] font-bold px-2.5 py-1 rounded-md border border-electricBlue/30">
-                            UCL SPECIAL
-                        </span>
-                    </div>
-                    <div class="p-6">
-                        <span class="text-xs text-slate-400"><i class="fa-regular fa-clock mr-1"></i> 5 Jam lalu</span>
-                        <h3 class="text-base font-bold text-white mt-2 group-hover:text-electricBlue transition-colors">
-                            Bintang Muda Bersinar di Panggung Megah Champions League
-                        </h3>
-                        <p class="text-xs text-slate-400 mt-2 line-clamp-2">
-                            Aksi luar biasa pencetak gol termuda pekan ini memukau para pengamat sepak bola dunia...
-                        </p>
-                    </div>
-                </div>
+        positions: [
+            ["GK", 88, 50],
+            ["LB", 72, 15],
+            ["CB", 76, 38],
+            ["CB", 76, 62],
+            ["RB", 72, 85],
+            ["CM", 54, 28],
+            ["CDM", 60, 50],
+            ["CM", 54, 72],
+            ["LW", 25, 17],
+            ["ST", 17, 50],
+            ["RW", 25, 83]
+        ]
+    },
 
-                <!-- Article Card 3 -->
-                <div onclick="openArticle('Update Transfer Musim Panas: Kejutan Besar', 'Klub-klub raksasa Eropa mulai bersiap mengamankan tanda tangan target utama...')" class="glass-panel rounded-2xl overflow-hidden hover:-translate-y-2 hover:shadow-neon transition-all duration-300 cursor-pointer group">
-                    <div class="h-48 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=600&q=80" alt="News Image" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        <span class="absolute top-3 left-3 bg-darkBg/80 text-amber-400 text-[10px] font-bold px-2.5 py-1 rounded-md border border-amber-400/30">
-                            RUMOR TRANSFER
-                        </span>
-                    </div>
-                    <div class="p-6">
-                        <span class="text-xs text-slate-400"><i class="fa-regular fa-clock mr-1"></i> 8 Jam lalu</span>
-                        <h3 class="text-base font-bold text-white mt-2 group-hover:text-neonGreen transition-colors">
-                            Rumor Transfer Musim Panas: Kejutan Rencana Pembelian Klub Raksasa
-                        </h3>
-                        <p class="text-xs text-slate-400 mt-2 line-clamp-2">
-                            Klausul pelepasan fantastis siap diaktifkan demi mengamankan jasa striker haus gol...
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    "4231": {
+        description:
+        "Formasi seimbang dengan dua gelandang bertahan dan satu playmaker di belakang striker.",
 
-    <!-- ARTICLE READ MODAL -->
-    <div id="article-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none scale-95 transition-all duration-300">
-        <div class="glass-panel max-w-xl w-full p-6 sm:p-8 rounded-2xl relative border border-slate-700">
-            <button onclick="closeModal('article-modal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <span class="text-xs font-bold text-neonGreen tracking-widest uppercase">OmarSports Article</span>
-            <h3 id="modal-title" class="text-xl font-bold text-white mt-2">Title Placeholder</h3>
-            <div class="my-4 h-0.5 bg-gradient-to-r from-neonGreen to-transparent"></div>
-            <p id="modal-content" class="text-slate-300 text-sm leading-relaxed mb-6">Article content goes here...</p>
-            <button onclick="closeModal('article-modal')" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-bold py-2.5 rounded-xl text-xs transition-colors">
-                Tutup Artikel
-            </button>
-        </div>
-    </div>
+        positions: [
+            ["GK", 88, 50],
+            ["LB", 72, 15],
+            ["CB", 76, 38],
+            ["CB", 76, 62],
+            ["RB", 72, 85],
+            ["CDM", 60, 35],
+            ["CDM", 60, 65],
+            ["LM", 37, 15],
+            ["CAM", 39, 50],
+            ["RM", 37, 85],
+            ["ST", 17, 50]
+        ]
+    },
 
-    <!-- MATCH STATS MODAL -->
-    <div id="match-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none scale-95 transition-all duration-300">
-        <div class="glass-panel max-w-lg w-full p-6 rounded-2xl relative border border-slate-700">
-            <button onclick="closeModal('match-modal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <h3 class="text-base font-bold text-white text-center mb-4">Statistik Detail Pertandingan</h3>
-            <div id="modal-match-details" class="space-y-4">
-                <!-- Dynamically populated stats -->
-            </div>
-        </div>
-    </div>
+    "352": {
+        description:
+        "Formasi dominasi lini tengah dengan tiga bek, dua wing-back, dan dua striker.",
 
-    <!-- FOOTER SECTION -->
-    <footer class="bg-darkCard border-t border-darkBorder pt-16 pb-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-12 gap-8 pb-12 border-b border-darkBorder">
-                
-                <!-- Brand Info -->
-                <div class="md:col-span-5 space-y-4">
-                    <a href="#" class="flex items-center gap-3">
-                        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-accentGreen to-electricBlue flex items-center justify-center text-black font-extrabold text-lg">
-                            <i class="fa-solid fa-futbol"></i>
-                        </div>
-                        <span class="text-xl font-black tracking-wider text-white">
-                            OMAR<span class="text-neonGreen">SPORTS</span>
-                        </span>
-                    </a>
-                    <p class="text-slate-400 text-xs leading-relaxed max-w-sm">
-                        Portal berita, live score, dan analisis sepak bola modern paling presisi. Dirancang untuk para penggemar sejati bola di seluruh dunia.
-                    </p>
-                    <div class="flex gap-3 text-slate-400">
-                        <a href="#" class="w-8 h-8 rounded-lg glass-panel flex items-center justify-center hover:text-neonGreen hover:border-neonGreen transition-colors"><i class="fa-brands fa-twitter"></i></a>
-                        <a href="#" class="w-8 h-8 rounded-lg glass-panel flex items-center justify-center hover:text-neonGreen hover:border-neonGreen transition-colors"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" class="w-8 h-8 rounded-lg glass-panel flex items-center justify-center hover:text-neonGreen hover:border-neonGreen transition-colors"><i class="fa-brands fa-youtube"></i></a>
-                    </div>
-                </div>
+        positions: [
+            ["GK", 88, 50],
+            ["CB", 76, 22],
+            ["CB", 79, 50],
+            ["CB", 76, 78],
+            ["LWB", 48, 12],
+            ["CM", 55, 32],
+            ["CDM", 60, 50],
+            ["CM", 55, 68],
+            ["RWB", 48, 88],
+            ["ST", 19, 35],
+            ["ST", 19, 65]
+        ]
+    }
 
-                <!-- Nav Links -->
-                <div class="md:col-span-3 space-y-3">
-                    <h4 class="text-white font-bold text-sm">Navigasi Cepat</h4>
-                    <ul class="space-y-2 text-xs text-slate-400">
-                        <li><a href="#live-scores" class="hover:text-neonGreen transition-colors">Live Score Terbaru</a></li>
-                        <li><a href="#standings" class="hover:text-neonGreen transition-colors">Klasemen Liga Top</a></li>
-                        <li><a href="#tactics-builder" class="hover:text-neonGreen transition-colors">Simulator Taktik</a></li>
-                        <li><a href="#news" class="hover:text-neonGreen transition-colors">Berita Utama</a></li>
-                    </ul>
-                </div>
+};
 
-                <!-- Newsletter Form -->
-                <div class="md:col-span-4 space-y-3">
-                    <h4 class="text-white font-bold text-sm">Berlangganan Newsletter</h4>
-                    <p class="text-slate-400 text-xs">Dapatkan update skor langsung dan kabar transfer mingguan.</p>
-                    <form onsubmit="handleSubscribe(event)" class="space-y-2">
-                        <div class="flex gap-2">
-                            <input type="email" id="email-input" required placeholder="Masukkan email kamu..." class="bg-darkBg border border-slate-700 text-white px-3 py-2 rounded-xl text-xs flex-1 focus:outline-none focus:border-neonGreen">
-                            <button type="submit" class="bg-neonGreen text-darkBg font-bold px-4 py-2 rounded-xl text-xs hover:bg-emerald-300 transition-colors">
-                                Kirim
-                            </button>
-                        </div>
-                        <p id="subscribe-msg" class="text-[11px] text-neonGreen hidden">✓ Terima kasih! Email berhasil terdaftar.</p>
-                    </form>
-                </div>
+let selectedClub = "arsenal";
+let currentFormation = "433";
 
-            </div>
+/* SELECT CLUB */
 
-            <div class="pt-8 text-center text-slate-500 text-xs">
-                &copy; 2026 OmarSports. All rights reserved. Built for Football Enthusiasts.
-            </div>
-        </div>
-    </footer>
+function selectClub(key) {
 
-    <script>
-        /* Mobile Navigation Toggle */
-        const mobileBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
+    if (!clubs[key]) return;
 
-        mobileBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+    selectedClub = key;
 
-        /* Dynamic Matches Data */
-        const matchesData = [
-            {
-                id: 1,
-                league: 'ucl',
-                leagueName: 'Champions League',
-                home: 'Real Madrid',
-                away: 'Arsenal',
-                homeScore: 2,
-                awayScore: 1,
-                minute: '78',
-                status: 'LIVE',
-                homePossession: 54,
-                awayPossession: 46,
-                homeShots: 14,
-                awayShots: 9,
-                homePasses: '88%'
-            },
-            {
-                id: 2,
-                league: 'epl',
-                leagueName: 'Premier League',
-                home: 'Man City',
-                away: 'Liverpool',
-                homeScore: 1,
-                awayScore: 1,
-                minute: '42',
-                status: 'LIVE',
-                homePossession: 62,
-                awayPossession: 38,
-                homeShots: 11,
-                awayShots: 7,
-                homePasses: '91%'
-            },
-            {
-                id: 3,
-                league: 'laliga',
-                leagueName: 'La Liga',
-                home: 'Barcelona',
-                away: 'Atlético Madrid',
-                homeScore: 3,
-                awayScore: 0,
-                minute: '90+2',
-                status: 'LIVE',
-                homePossession: 60,
-                awayPossession: 40,
-                homeShots: 18,
-                awayShots: 4,
-                homePasses: '89%'
-            }
-        ];
+    document.querySelectorAll(".club").forEach(btn => {
+        btn.classList.remove("active");
+    });
 
-        /* Render Matches */
-        function renderMatches(filter = 'all') {
-            const container = document.getElementById('matches-container');
-            container.innerHTML = '';
+    document.getElementById("club-" + key)
+        .classList.add("active");
 
-            const filtered = filter === 'all' ? matchesData : matchesData.filter(m => m.league === filter);
+    document.getElementById("selected-name").textContent =
+        clubs[key].name;
 
-            filtered.forEach(m => {
-                const card = document.createElement('div');
-                card.className = "glass-panel rounded-2xl p-5 hover:border-neonGreen/50 transition-all duration-300 cursor-pointer";
-                card.onclick = () => openMatchStats(m.id);
+    document.getElementById("selected-logo").src =
+        clubs[key].logo;
 
-                card.innerHTML = `
-                    <div class="flex justify-between items-center text-xs mb-3 text-slate-400">
-                        <span class="font-bold text-slate-300">${m.leagueName}</span>
-                        <span class="flex items-center gap-1.5 text-red-400 font-semibold bg-red-500/10 px-2 py-0.5 rounded-full">
-                            <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping"></span> ${m.minute}'
-                        </span>
-                    </div>
-                    <div class="flex justify-between items-center py-2">
-                        <div class="font-bold text-sm text-white">${m.home}</div>
-                        <div class="text-xl font-black text-neonGreen">${m.homeScore} - ${m.awayScore}</div>
-                        <div class="font-bold text-sm text-white text-right">${m.away}</div>
-                    </div>
-                    <div class="mt-3 pt-3 border-t border-darkBorder flex justify-between items-center text-[11px] text-slate-400">
-                        <span>Klik untuk detail statistik</span>
-                        <i class="fa-solid fa-chevron-right text-neonGreen"></i>
-                    </div>
-                `;
-                container.appendChild(card);
-            });
-        }
+    renderPlayers();
+}
 
-        function filterMatches(league) {
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.className = "filter-btn glass-panel text-slate-300 hover:text-white px-4 py-2 rounded-lg text-xs transition-all";
-            });
-            event.target.className = "filter-btn active bg-neonGreen text-darkBg font-bold px-4 py-2 rounded-lg text-xs transition-all";
-            renderMatches(league);
-        }
+/* CHANGE FORMATION */
 
-        /* Standings Data & Switcher */
-        const standingsData = {
-            epl: [
-                { pos: 1, team: 'Arsenal', p: 28, w: 20, d: 5, l: 3, gd: '+38', pts: 65 },
-                { pos: 2, team: 'Manchester City', p: 28, w: 19, d: 6, l: 3, gd: '+35', pts: 63 },
-                { pos: 3, team: 'Liverpool', p: 28, w: 18, d: 7, l: 3, gd: '+30', pts: 61 },
-                { pos: 4, team: 'Aston Villa', p: 28, w: 16, d: 5, l: 7, gd: '+18', pts: 53 },
-            ],
-            laliga: [
-                { pos: 1, team: 'Real Madrid', p: 28, w: 21, d: 6, l: 1, gd: '+40', pts: 69 },
-                { pos: 2, team: 'Girona', p: 28, w: 19, d: 5, l: 4, gd: '+26', pts: 62 },
-                { pos: 3, team: 'Barcelona', p: 28, w: 18, d: 7, l: 3, gd: '+23', pts: 61 },
-                { pos: 4, team: 'Atlético Madrid', p: 28, w: 17, d: 4, l: 7, gd: '+19', pts: 55 },
-            ],
-            seriea: [
-                { pos: 1, team: 'Inter Milan', p: 28, w: 24, d: 3, l: 1, gd: '+53', pts: 75 },
-                { pos: 2, team: 'AC Milan', p: 28, w: 18, d: 5, l: 5, gd: '+20', pts: 59 },
-                { pos: 3, team: 'Juventus', p: 28, w: 17, d: 7, l: 4, gd: '+21', pts: 58 },
-                { pos: 4, team: 'Bologna', p: 28, w: 14, d: 9, l: 5, gd: '+16', pts: 51 },
-            ]
-        };
+function changeFormation(key) {
 
-        function switchStandings(leagueKey) {
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.className = "tab-btn text-slate-400 hover:text-white font-medium px-5 py-2.5 rounded-lg text-xs transition-all";
-            });
-            document.getElementById(`tab-${leagueKey}`).className = "tab-btn bg-accentGreen text-darkBg font-bold px-5 py-2.5 rounded-lg text-xs transition-all";
+    if (!formations[key]) return;
 
-            const body = document.getElementById('standings-body');
-            body.innerHTML = '';
+    currentFormation = key;
 
-            standingsData[leagueKey].forEach(row => {
-                const tr = document.createElement('tr');
-                tr.className = "hover:bg-slate-800/40 transition-colors";
-                tr.innerHTML = `
-                    <td class="py-3.5 px-6 font-bold ${row.pos === 1 ? 'text-neonGreen' : 'text-slate-300'}">${row.pos}</td>
-                    <td class="py-3.5 px-6 text-white font-semibold">${row.team}</td>
-                    <td class="py-3.5 px-3 text-center text-slate-400">${row.p}</td>
-                    <td class="py-3.5 px-3 text-center text-slate-400">${row.w}</td>
-                    <td class="py-3.5 px-3 text-center text-slate-400">${row.d}</td>
-                    <td class="py-3.5 px-3 text-center text-slate-400">${row.l}</td>
-                    <td class="py-3.5 px-3 text-center text-slate-300">${row.gd}</td>
-                    <td class="py-3.5 px-6 text-center font-extrabold text-neonGreen">${row.pts}</td>
-                `;
-                body.appendChild(tr);
-            });
-        }
+    document.querySelectorAll(".formation").forEach(btn => {
+        btn.classList.remove("active");
+    });
 
-        /* Tactics Formation Simulator Logic */
-        const formations = {
-            '433': {
-                desc: 'High Pressing & Attacking Football. Mengandalkan dua sayap cepat dan playmaker kreatif.',
-                positions: [
-                    { name: 'GK', top: '85%', left: '48%' },
-                    { name: 'LB', top: '65%', left: '15%' },
-                    { name: 'CB', top: '70%', left: '35%' },
-                    { name: 'CB', top: '70%', left: '60%' },
-                    { name: 'RB', top: '65%', left: '80%' },
-                    { name: 'CM', top: '45%', left: '30%' },
-                    { name: 'CDM', top: '50%', left: '48%' },
-                    { name: 'CM', top: '45%', left: '66%' },
-                    { name: 'LW', top: '20%', left: '18%' },
-                    { name: 'ST', top: '15%', left: '48%' },
-                    { name: 'RW', top: '20%', left: '78%' },
-                ]
-            },
-            '4231': {
-                desc: 'Keseimbangan pertahanan kokoh dan serangan balik cepat lewat Playmaker No. 10.',
-                positions: [
-                    { name: 'GK', top: '85%', left: '48%' },
-                    { name: 'LB', top: '65%', left: '15%' },
-                    { name: 'CB', top: '70%', left: '35%' },
-                    { name: 'CB', top: '70%', left: '60%' },
-                    { name: 'RB', top: '65%', left: '80%' },
-                    { name: 'CDM', top: '52%', left: '35%' },
-                    { name: 'CDM', top: '52%', left: '60%' },
-                    { name: 'CAM', top: '32%', left: '48%' },
-                    { name: 'LM', top: '30%', left: '18%' },
-                    { name: 'RM', top: '30%', left: '78%' },
-                    { name: 'ST', top: '15%', left: '48%' },
-                ]
-            },
-            '352': {
-                desc: 'Dominasi area tengah lapangan serta tusukan cepat wing-back agresif.',
-                positions: [
-                    { name: 'GK', top: '85%', left: '48%' },
-                    { name: 'CB', top: '70%', left: '25%' },
-                    { name: 'CB', top: '72%', left: '48%' },
-                    { name: 'CB', top: '70%', left: '70%' },
-                    { name: 'LWB', top: '45%', left: '12%' },
-                    { name: 'CM', top: '48%', left: '35%' },
-                    { name: 'CDM', top: '52%', left: '48%' },
-                    { name: 'CM', top: '48%', left: '62%' },
-                    { name: 'RWB', top: '45%', left: '84%' },
-                    { name: 'ST', top: '18%', left: '38%' },
-                    { name: 'ST', top: '18%', left: '58%' },
-                ]
-            }
-        };
+    document.getElementById("form-" + key)
+        .classList.add("active");
 
-        function changeFormation(fmtKey) {
-            document.querySelectorAll('.formation-btn').forEach(btn => {
-                btn.className = "formation-btn glass-panel text-slate-300 hover:text-white font-medium py-2.5 rounded-lg text-xs transition-all";
-            });
-            document.getElementById(`form-${fmtKey}`).className = "formation-btn active border border-neonGreen bg-neonGreen/10 text-neonGreen font-bold py-2.5 rounded-lg text-xs transition-all";
+    document.getElementById("description").textContent =
+        formations[key].description;
 
-            document.getElementById('tactics-desc').innerText = formations[fmtKey].desc;
+    document.getElementById("formation-label").textContent =
+        "FORMASI " + key.replace("4231", "4-2-3-1")
+                        .replace("433", "4-3-3")
+                        .replace("352", "3-5-2");
 
-            const container = document.getElementById('pitch-players');
-            container.innerHTML = '';
+    document.getElementById("selected-formation").textContent =
+        "Starting XI • " +
+        key.replace("4231", "4-2-3-1")
+           .replace("433", "4-3-3")
+           .replace("352", "3-5-2");
 
-            formations[fmtKey].positions.forEach(pos => {
-                const p = document.createElement('div');
-                p.className = "absolute -translate-x-1/2 -translate-y-1/2 flex flex-col items-center group cursor-pointer transition-all duration-700 ease-out";
-                p.style.top = pos.top;
-                p.style.left = pos.left;
+    renderPlayers();
+}
 
-                p.innerHTML = `
-                    <div class="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-slate-900 border-2 border-neonGreen flex items-center justify-center text-[10px] sm:text-xs font-bold text-white shadow-neon group-hover:scale-125 transition-transform">
-                        <i class="fa-solid fa-user text-[10px] text-neonGreen"></i>
-                    </div>
-                    <span class="text-[9px] sm:text-[10px] font-extrabold text-white bg-darkBg/80 px-1.5 py-0.5 rounded mt-1 border border-slate-700">
-                        ${pos.name}
-                    </span>
-                `;
-                container.appendChild(p);
-            });
-        }
+/* RENDER PLAYERS */
 
-        /* Modal Helpers */
-        function openArticle(title, content) {
-            document.getElementById('modal-title').innerText = title;
-            document.getElementById('modal-content').innerText = content;
-            document.getElementById('article-modal').classList.add('modal-active');
-        }
+function renderPlayers() {
 
-        function openMatchStats(matchId) {
-            const m = matchesData.find(item => item.id === matchId);
-            if (!m) return;
+    const container = document.getElementById("players");
 
-            const modalContent = document.getElementById('modal-match-details');
-            modalContent.innerHTML = `
-                <div class="flex justify-between items-center bg-darkBg/80 p-4 rounded-xl border border-slate-800">
-                    <span class="font-bold text-white text-sm">${m.home}</span>
-                    <span class="text-xl font-extrabold text-neonGreen">${m.homeScore} - ${m.awayScore}</span>
-                    <span class="font-bold text-white text-sm">${m.away}</span>
-                </div>
-                
-                <div class="space-y-3 pt-2">
-                    <div>
-                        <div class="flex justify-between text-xs text-slate-300 mb-1">
-                            <span>${m.homePossession}%</span>
-                            <span class="font-semibold text-slate-400">Penguasaan Bola</span>
-                            <span>${m.awayPossession}%</span>
-                        </div>
-                        <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden flex">
-                            <div class="bg-neonGreen h-full" style="width: ${m.homePossession}%"></div>
-                            <div class="bg-electricBlue h-full" style="width: ${m.awayPossession}%"></div>
-                        </div>
-                    </div>
+    container.innerHTML = "";
 
-                    <div class="flex justify-between text-xs py-2 border-b border-darkBorder text-slate-300">
-                        <span>${m.homeShots}</span>
-                        <span class="text-slate-400">Total Tembakan</span>
-                        <span>${m.awayShots}</span>
-                    </div>
+    const club = clubs[selectedClub];
 
-                    <div class="flex justify-between text-xs py-2 border-b border-darkBorder text-slate-300">
-                        <span>${m.homePasses}</span>
-                        <span class="text-slate-400">Akurasi Umpan</span>
-                        <span>84%</span>
-                    </div>
-                </div>
-            `;
-            document.getElementById('match-modal').classList.add('modal-active');
-        }
+    formations[currentFormation].positions.forEach((pos, index) => {
 
-        function closeModal(id) {
-            document.getElementById(id).classList.remove('modal-active');
-        }
+        const player = document.createElement("div");
 
-        function handleSubscribe(e) {
-            e.preventDefault();
-            document.getElementById('subscribe-msg').classList.remove('hidden');
-            document.getElementById('email-input').value = '';
-        }
+        player.className = "player";
 
-        function scrollToMatch() {
-            document.getElementById('live-scores').scrollIntoView({ behavior: 'smooth' });
-        }
+        player.style.top = pos[1] + "%";
+        player.style.left = pos[2] + "%";
 
-        /* Initial Page Setup */
-        window.onload = function() {
-            renderMatches('all');
-            switchStandings('epl');
-            changeFormation('433');
-        };
-    </script>
+        const logo = document.createElement("div");
+        logo.className = "player-logo";
+
+        const img = document.createElement("img");
+        img.src = club.logo;
+        img.alt = club.name;
+        img.loading = "lazy";
+
+        logo.appendChild(img);
+
+        const name = document.createElement("span");
+        name.className = "player-name";
+        name.textContent = pos[0];
+
+        player.appendChild(logo);
+        player.appendChild(name);
+
+        container.appendChild(player);
+
+    });
+
+}
+
+/* INITIALIZE */
+
+renderPlayers();
+
+</script>
+
 </body>
 </html>
