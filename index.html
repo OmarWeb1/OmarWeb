@@ -4,597 +4,474 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OMARSPORTS | Ultimate Football Hub</title>
-<meta name="theme-color" content="#080d17">
+<title>OmarSports - Football Universe</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 :root {
-    --bg:#080d17;
-    --panel:#101a2a;
-    --panel2:#162338;
-    --border:#26364c;
-    --green:#b5ff35;
-    --text:#f3f6fb;
-    --muted:#8493a9;
-    --red:#ef4444;
-    --blue:#4ea5ff;
+  --bg: #080d16;
+  --panel: #142238;
+  --green: #b8ff3b;
+  --white: #f4f7fb;
+  --muted: #8b9bb0;
+  --line: #26374d;
 }
-* {box-sizing:border-box;margin:0;padding:0}
-html {scroll-behavior:smooth;scroll-padding-top:90px}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
 body {
-    background:var(--bg);
-    color:var(--text);
-    font-family:Inter,sans-serif;
-    overflow-x:hidden;
+  background: var(--bg);
+  color: var(--white);
+  font-family: Inter, sans-serif;
 }
-button,input,select {font:inherit}
-button {cursor:pointer}
-a {color:inherit;text-decoration:none}
-img {max-width:100%}
-.container {max-width:1250px;margin:auto;padding:0 22px}
-.muted {color:var(--muted)}
-.green {color:var(--green)}
-.eyebrow {
-    color:var(--green);
-    font-size:10px;
-    letter-spacing:2px;
-    font-weight:800;
-    text-transform:uppercase;
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
-.section {padding:65px 0}
-.section-head {
-    display:flex;
-    justify-content:space-between;
-    align-items:end;
-    gap:15px;
-    margin-bottom:25px;
+
+.container {
+  width: 90%;
+  max-width: 1180px;
+  margin: auto;
 }
-.section-head h2 {
-    font:800 32px "Barlow Condensed",sans-serif;
-    text-transform:uppercase;
-    letter-spacing:1px;
+
+header {
+  background: #080d16;
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
-.btn {
-    padding:11px 17px;
-    border:1px solid var(--border);
-    border-radius:8px;
-    color:white;
-    background:var(--panel2);
-    font-size:12px;
-    font-weight:700;
-    transition:.2s;
+
+nav {
+  min-height: 75px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
 }
-.btn:hover {border-color:var(--green);color:var(--green)}
-.btn-primary {background:var(--green);color:#0a111a;border:0}
-.btn-primary:hover {background:white;color:#080d17}
-.card {
-    background:linear-gradient(145deg,#142136,#0f1929);
-    border:1px solid var(--border);
-    border-radius:15px;
-    overflow:hidden;
+
+.logo {
+  font: 900 30px "Barlow Condensed";
 }
-.tag {
-    font-size:9px;
-    padding:5px 8px;
-    border-radius:5px;
-    background:#27394e;
-    color:#c5d3e6;
-    font-weight:800;
-    letter-spacing:1px;
+
+.logo span, .green { color: var(--green); }
+
+nav a {
+  margin-left: 18px;
+  font-size: 12px;
+  font-weight: bold;
 }
-.topbar {
-    height:36px;
-    background:#060a11;
-    border-bottom:1px solid #182338;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 5%;
-    color:#9ba8ba;
-    font-size:10px;
-}
-.topbar strong {color:var(--green)}
-.navbar {
-    height:76px;
-    background:rgba(8,13,23,.94);
-    backdrop-filter:blur(15px);
-    border-bottom:1px solid var(--border);
-    display:flex;
-    align-items:center;
-    position:sticky;
-    top:0;
-    z-index:100;
-}
-.nav-inner {
-    width:100%;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px;
-}
-.brand {
-    font:900 29px "Barlow Condensed",sans-serif;
-    letter-spacing:1px;
-    white-space:nowrap;
-}
-.brand span {color:var(--green)}
-.brand small {
-    display:block;
-    font:700 8px Inter,sans-serif;
-    color:var(--muted);
-    letter-spacing:3px;
-}
-.navlinks {
-    display:flex;
-    align-items:center;
-    gap:23px;
-}
-.navlinks a {
-    font-size:11px;
-    font-weight:700;
-    color:#aebbd0;
-    transition:.2s;
-}
-.navlinks a:hover {color:var(--green)}
-.nav-actions {display:flex;gap:9px;align-items:center}
-.icon-btn {
-    width:37px;height:37px;
-    display:grid;place-items:center;
-    background:var(--panel2);
-    color:white;border:1px solid var(--border);
-    border-radius:8px;
-}
-.menu-btn {display:none}
+
+nav a:hover { color: var(--green); }
+
 .hero {
-    min-height:530px;
-    display:flex;
-    align-items:center;
-    position:relative;
-    overflow:hidden;
-    background:
-    linear-gradient(90deg,#080d17 0%,rgba(8,13,23,.96) 38%,rgba(8,13,23,.28) 100%),
-    linear-gradient(0deg,#080d17,transparent 45%),
-    url("https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1800") center/cover;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  background:
+    linear-gradient(90deg,#080d16 10%,#080d16bb),
+    url("https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1600")
+    center/cover;
 }
-.hero-content {max-width:650px;padding:90px 0;position:relative}
+
 .hero h1 {
-    font:900 clamp(55px,9vw,105px)/.87 "Barlow Condensed",sans-serif;
-    text-transform:uppercase;
-    margin:20px 0;
+  font: 900 clamp(55px,9vw,95px)/.9 "Barlow Condensed";
+  margin: 20px 0;
 }
-.hero h1 span {color:var(--green)}
-.hero p {color:#b3bfd0;max-width:500px;font-size:13px;line-height:1.9}
-.hero-buttons {display:flex;gap:12px;margin-top:27px;flex-wrap:wrap}
-.hero-stats {
-    display:flex;gap:35px;margin-top:45px;
-    border-top:1px solid #39465b;padding-top:22px;
+
+.hero p {
+  max-width: 520px;
+  color: #c4ceda;
+  line-height: 1.8;
+  font-size: 14px;
 }
-.hero-stat strong {
-    display:block;font:800 27px "Barlow Condensed",sans-serif;
+
+.btn {
+  display: inline-block;
+  background: var(--green);
+  color: #080d16;
+  padding: 13px 20px;
+  border-radius: 7px;
+  font-weight: 800;
+  font-size: 12px;
+  margin-top: 22px;
 }
-.hero-stat span {font-size:9px;color:var(--muted);letter-spacing:1px}
-.ticker {
-    background:var(--green);
-    color:#08110b;
-    height:42px;
-    overflow:hidden;
-    display:flex;align-items:center;
-    font-size:11px;font-weight:800;
+
+section { padding: 60px 0; }
+
+.section-title {
+  font: 800 35px "Barlow Condensed";
+  margin-bottom: 25px;
 }
-.ticker-label {background:#09120b;color:var(--green);padding:14px 18px;white-space:nowrap}
-.ticker-track {white-space:nowrap;animation:marquee 35s linear infinite}
-.ticker-track span {margin:0 30px}
-@keyframes marquee {to{transform:translateX(-50%)}}
-.featured {
-    display:grid;grid-template-columns:1.3fr .7fr;gap:18px;
+
+.subtitle {
+  color: var(--green);
+  font-size: 10px;
+  letter-spacing: 2px;
+  font-weight: bold;
+  margin-bottom: 8px;
 }
-.featured-match {
-    padding:25px;
-    background:radial-gradient(circle at 50% 30%,#263b4b,#111c2b 65%);
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 15px;
 }
-.match-meta {display:flex;justify-content:space-between;align-items:center}
-.match-teams {
-    display:grid;grid-template-columns:1fr auto 1fr;
-    align-items:center;text-align:center;
-    gap:12px;padding:35px 0;
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px;
 }
-.team-logo {
-    width:75px;height:75px;
-    object-fit:contain;
-    margin:auto;
-    display:block;
+
+.club {
+  text-align: center;
+  transition: .2s;
 }
-.team-name {font-weight:800;font-size:13px;margin-top:12px}
-.score {
-    font:900 48px "Barlow Condensed",sans-serif;
+
+.club:hover {
+  border-color: var(--green);
+  transform: translateY(-4px);
 }
-.match-time {font-size:10px;color:var(--muted);margin-top:7px}
-.match-note {text-align:center;color:var(--muted);font-size:10px}
-.match-bottom {
-    border-top:1px solid var(--border);
-    margin-top:18px;padding-top:15px;
-    display:flex;justify-content:space-between;align-items:center;
+
+.club img {
+  width: 75px;
+  height: 75px;
+  object-fit: contain;
 }
-.quick-grid {display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.quick-card {padding:20px;min-height:125px}
-.quick-card .number {font:800 31px "Barlow Condensed",sans-serif;margin:12px 0 3px}
-.quick-card p {font-size:10px;color:var(--muted)}
-.quick-card .small-title {font-size:10px;color:var(--muted);font-weight:700}
-.match-list {display:grid;gap:10px}
-.match-row {
-    padding:15px;
-    display:grid;
-    grid-template-columns:70px 1fr auto 1fr 70px;
-    gap:10px;
-    align-items:center;
-    text-align:center;
+
+.club h3 {
+  margin-top: 12px;
+  font-size: 13px;
 }
-.match-row img {width:30px;height:30px;object-fit:contain;vertical-align:middle}
-.match-row strong {font-size:11px}
-.match-row .result {font-weight:900;color:var(--green);font-size:13px}
-.match-row .date {font-size:9px;color:var(--muted)}
-.match-row .status {font-size:9px;color:var(--muted)}
-.table-wrap {overflow-x:auto}
-table {width:100%;border-collapse:collapse;min-width:600px}
-th {
-    color:var(--muted);
-    font-size:9px;text-transform:uppercase;
-    letter-spacing:1px;text-align:center;
-    padding:15px 10px;
-    background:#0b1422;
+
+.match {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  margin-bottom: 12px;
 }
-td {padding:14px 10px;text-align:center;font-size:11px;border-top:1px solid var(--border)}
-td.club-cell {text-align:left;font-weight:700}
-.club-cell img {width:27px;height:27px;object-fit:contain;vertical-align:middle;margin-right:10px}
-tr:hover td {background:#17253a}
-.position {color:var(--muted);margin-right:10px}
-.points {color:var(--green);font-weight:900}
-.tabs {display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
-.tab {
-    padding:10px 15px;border-radius:7px;
-    border:1px solid var(--border);
-    background:var(--panel);color:var(--muted);
-    font-size:10px;font-weight:800;
+
+.match img {
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+  display: block;
+  margin: auto auto 8px;
 }
-.tab.active {background:var(--green);color:#08110b;border-color:var(--green)}
-.clubs-grid {display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
-.club-card {
-    padding:20px;text-align:center;
-    cursor:pointer;transition:.25s;
+
+.match strong { font-size: 12px; }
+.match span { color: var(--green); font-weight: 900; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--panel);
+  border-radius: 10px;
+  overflow: hidden;
 }
-.club-card:hover {transform:translateY(-5px);border-color:var(--green)}
-.club-card.selected {border-color:var(--green);background:#192a2c}
-.club-card img {height:68px;width:68px;object-fit:contain;margin-bottom:12px}
-.club-card h3 {font-size:12px}
-.club-card p {font-size:9px;color:var(--muted);margin-top:5px}
-.news-grid {display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.news-card {transition:.25s}
-.news-card:hover {transform:translateY(-5px)}
-.news-image {height:175px;position:relative;overflow:hidden}
-.news-image img {width:100%;height:100%;object-fit:cover;transition:.4s}
-.news-card:hover img {transform:scale(1.06)}
-.news-content {padding:18px}
-.news-content h3 {font-size:14px;line-height:1.6;margin:12px 0}
-.news-content p {font-size:10px;color:var(--muted);line-height:1.7}
-.news-meta {font-size:9px;color:var(--muted);margin-top:15px}
-.tactics-layout {display:grid;grid-template-columns:300px 1fr;gap:20px}
-.tactics-controls {padding:20px}
-.control-label {
-    font-size:10px;color:var(--muted);
-    font-weight:800;letter-spacing:1px;
-    margin:18px 0 10px;display:block;
+
+th, td {
+  padding: 14px;
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+  font-size: 12px;
 }
-.select {
-    width:100%;padding:12px;
-    border:1px solid var(--border);
-    background:#0a1422;color:white;
-    border-radius:8px;outline:none;
-}
-.formation-grid {display:grid;grid-template-columns:repeat(2,1fr);gap:7px}
-.formation-btn {
-    background:#1b2a40;color:#c2d0e3;
-    border:1px solid var(--border);
-    padding:11px 4px;border-radius:7px;
-    font-size:11px;font-weight:800;
-}
-.formation-btn.active {background:var(--green);color:#07120a;border-color:var(--green)}
-.pitch-card {padding:15px}
-.pitch-head {display:flex;justify-content:space-between;gap:10px;margin-bottom:13px;align-items:center}
+
+th { color: var(--green); }
+
 .pitch {
-    position:relative;
-    width:100%;max-width:520px;
-    aspect-ratio: .78;
-    margin:auto;
-    overflow:hidden;
-    border:3px solid rgba(255,255,255,.8);
-    background:repeating-linear-gradient(0deg,#167346 0px,#167346 65px,#11643b 65px,#11643b 130px);
+  max-width: 480px;
+  height: 570px;
+  margin: auto;
+  position: relative;
+  border: 3px solid white;
+  background: repeating-linear-gradient(
+    0deg,#176b43 0 70px,#12613c 70px 140px
+  );
 }
-.pitch-line {position:absolute;border:2px solid rgba(255,255,255,.65);pointer-events:none}
-.p-mid {top:50%;width:100%;border-width:2px 0 0}
-.p-circle {width:25%;aspect-ratio:1;left:50%;top:50%;border-radius:50%;transform:translate(-50%,-50%)}
-.p-box-top {top:0;left:22%;width:56%;height:15%;border-top:0}
-.p-box-bottom {bottom:0;left:22%;width:56%;height:15%;border-bottom:0}
-.p-goal-top {top:0;left:37%;width:26%;height:5%;border-top:0}
-.p-goal-bottom {bottom:0;left:37%;width:26%;height:5%;border-bottom:0}
+
+.pitch::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  border-top: 2px solid white;
+}
+
 .player {
-    position:absolute;z-index:5;
-    transform:translate(-50%,-50%);
-    display:flex;flex-direction:column;align-items:center;
-    cursor:grab;touch-action:none;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  background: var(--green);
+  color: #080d16;
+  padding: 7px 10px;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 900;
+  cursor: pointer;
 }
-.player:active {cursor:grabbing}
-.player-badge {
-    width:clamp(29px,6vw,43px);
-    height:clamp(29px,6vw,43px);
-    background:#091322;border:2px solid var(--green);
-    border-radius:50%;padding:4px;
-    display:grid;place-items:center;
-    box-shadow:0 3px 12px #06100c;
+
+.news img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
 }
-.player-badge img {width:100%;height:100%;object-fit:contain}
-.player-position {
-    font-size:8px;font-weight:900;
-    background:#091322;color:white;
-    border:1px solid #b5ff35;
-    padding:3px 5px;border-radius:4px;
-    margin-top:3px;white-space:nowrap;
+
+.news h3 {
+  font-size: 14px;
+  margin-top: 12px;
 }
-.pitch-actions {display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
-.quiz-box {padding:25px}
-.quiz-question {font-size:18px;font-weight:800;line-height:1.5;margin:15px 0}
-.quiz-options {display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.quiz-option {
-    padding:13px;text-align:left;
-    background:#1b2a40;color:white;
-    border:1px solid var(--border);
-    border-radius:8px;font-size:11px;
+
+footer {
+  padding: 35px 0;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  text-align: center;
+  font-size: 11px;
 }
-.quiz-option:hover {border-color:var(--green)}
-.quiz-option.correct {background:#164a32;border-color:#4ade80}
-.quiz-option.wrong {background:#501c25;border-color:#ef4444}
-.quiz-footer {margin-top:18px;display:flex;justify-content:space-between;align-items:center}
-.squad-grid {display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.squad-player {padding:15px;display:flex;align-items:center;gap:12px}
-.squad-player img {width:38px;height:38px;object-fit:contain}
-.squad-player strong {font-size:11px}
-.squad-player small {display:block;color:var(--muted);font-size:9px;margin-top:4px}
-.newsletter {
-    padding:35px;
-    background:linear-gradient(110deg,#192d2a,#102238);
-    border:1px solid #354d40;
-    border-radius:15px;
-    display:flex;align-items:center;justify-content:space-between;gap:20px;
+
+@media(max-width:800px) {
+  .grid { grid-template-columns: repeat(2,1fr); }
+  nav { padding: 15px 0; }
+  nav a { margin: 5px; }
 }
-.newsletter h2 {font:800 28px "Barlow Condensed",sans-serif}
-.newsletter p {font-size:11px;color:#b1c0ce;margin-top:7px}
-.newsletter-form {display:flex;gap:8px;max-width:400px;width:100%}
-.newsletter input {
-    width:100%;min-width:0;
-    background:#0b1422;color:white;
-    border:1px solid var(--border);
-    padding:12px;border-radius:7px;outline:none;
-}
-.footer {padding:45px 0 20px;border-top:1px solid var(--border);margin-top:60px}
-.footer-grid {display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}
-.footer p {font-size:11px;color:var(--muted);line-height:1.9;margin-top:15px;max-width:360px}
-.footer h3 {font-size:11px;margin-bottom:15px}
-.footer a {display:block;font-size:10px;color:var(--muted);margin:11px 0}
-.footer a:hover {color:var(--green)}
-.copyright {border-top:1px solid var(--border);margin-top:30px;padding-top:18px;text-align:center;font-size:9px;color:var(--muted)}
-.modal {
-    display:none;position:fixed;inset:0;z-index:200;
-    background:#000b;align-items:center;justify-content:center;padding:20px;
-}
-.modal.show {display:flex}
-.modal-content {
-    width:100%;max-width:500px;
-    background:#101b2c;border:1px solid var(--border);
-    padding:25px;border-radius:15px;
-}
-.modal-close {float:right;background:none;border:0;color:white;font-size:24px}
-.toast {
-    position:fixed;bottom:25px;right:20px;
-    background:var(--green);color:#08120b;
-    padding:13px 18px;border-radius:8px;
-    font-size:11px;font-weight:800;
-    z-index:300;transform:translateY(100px);
-    transition:.3s;
-}
-.toast.show {transform:translateY(0)}
-@media(max-width:850px) {
-    .navlinks {display:none;position:absolute;top:76px;left:0;right:0;background:#0d1726;padding:20px;flex-direction:column;align-items:start;border-bottom:1px solid var(--border)}
-    .navlinks.open {display:flex}
-    .menu-btn {display:grid}
-    .featured {grid-template-columns:1fr}
-    .tactics-layout {grid-template-columns:1fr}
-    .clubs-grid {grid-template-columns:repeat(2,1fr)}
-    .squad-grid {grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:600px) {
-    .container {padding:0 14px}
-    .section {padding:43px 0}
-    .hero {min-height:470px}
-    .hero-content {padding:65px 0}
-    .hero-stats {gap:20px}
-    .hero-stat strong {font-size:23px}
-    .section-head h2 {font-size:26px}
-    .quick-grid {grid-template-columns:1fr 1fr}
-    .news-grid {grid-template-columns:1fr}
-    .news-image {height:190px}
-    .newsletter {flex-direction:column;align-items:start;padding:23px}
-    .footer-grid {grid-template-columns:1fr 1fr}
-    .footer-grid>div:first-child {grid-column:1/-1}
-    .quiz-options {grid-template-columns:1fr}
-    .match-row {grid-template-columns:45px 1fr auto 1fr 45px;padding:12px 5px}
-    .match-row strong {font-size:9px}
-    .match-row img {width:24px;height:24px}
-    .score {font-size:39px}
+
+@media(max-width:500px) {
+  .grid { grid-template-columns: 1fr 1fr; }
+  .hero { min-height: 400px; }
+  .section-title { font-size: 28px; }
+  th,td { padding: 9px 5px; }
 }
 </style>
 </head>
 
 <body>
 
-<div class="topbar">
-    <span>OMARSPORTS <strong>ULTIMATE FOOTBALL HUB</strong></span>
-    <span>YOUR FOOTBALL. YOUR PASSION.</span>
-</div>
-
-<nav class="navbar">
-<div class="container nav-inner">
-    <a href="#home" class="brand">
-        OMAR<span>SPORTS</span>
-        <small>FOOTBALL EXPERIENCE</small>
-    </a>
-
-    <div class="navlinks" id="navlinks">
+<header>
+  <div class="container">
+    <nav>
+      <div class="logo">OMAR<span>SPORTS</span></div>
+      <div>
         <a href="#home">HOME</a>
         <a href="#matches">MATCHES</a>
-        <a href="#standings">STANDINGS</a>
+        <a href="#standings">LEAGUE</a>
         <a href="#clubs">CLUBS</a>
-        <a href="#tactics">TACTICS LAB</a>
+        <a href="#tactics">TACTICS</a>
         <a href="#news">NEWS</a>
-        <a href="#quiz">QUIZ</a>
-    </div>
-
-    <div class="nav-actions">
-        <button class="icon-btn" onclick="searchSite()" title="Search">⌕</button>
-        <button class="icon-btn menu-btn" onclick="toggleMenu()">☰</button>
-    </div>
-</div>
-</nav>
-
-<!-- HERO -->
+      </div>
+    </nav>
+  </div>
+</header>
 
 <section class="hero" id="home">
-<div class="container">
-    <div class="hero-content">
-        <div class="eyebrow">THE HOME OF FOOTBALL FANS</div>
-        <h1>FEEL THE<br><span>GAME.</span><br>LIVE IT.</h1>
-        <p>
-            Selamat datang di OmarSports. Jelajahi dunia sepak bola,
-            klub favorit, jadwal pertandingan, klasemen, berita,
-            statistik dan bangun strategi tim impianmu.
-        </p>
-
-        <div class="hero-buttons">
-            <a href="#matches" class="btn btn-primary">EXPLORE MATCHES ↗</a>
-            <a href="#tactics" class="btn">BUILD YOUR TACTICS ⚽</a>
-        </div>
-
-        <div class="hero-stats">
-            <div class="hero-stat">
-                <strong>04</strong>
-                <span>FEATURED CLUBS</span>
-            </div>
-            <div class="hero-stat">
-                <strong>08</strong>
-                <span>FORMATIONS</span>
-            </div>
-            <div class="hero-stat">
-                <strong>∞</strong>
-                <span>FOOTBALL PASSION</span>
-            </div>
-        </div>
-    </div>
-</div>
+  <div class="container">
+    <div class="subtitle">YOUR WORLD. YOUR FOOTBALL.</div>
+    <h1>LIVE THE<br><span class="green">BEAUTIFUL</span><br>GAME.</h1>
+    <p>
+      Jelajahi pertandingan, klub, pemain, klasemen,
+      berita, dan strategi sepak bola dalam satu tempat.
+    </p>
+    <a href="#matches" class="btn">EXPLORE MATCH CENTER ↗</a>
+  </div>
 </section>
 
-<div class="ticker">
-    <div class="ticker-label">FOOTBALL UPDATE</div>
-    <div class="ticker-track">
-        <span>⚽ WELCOME TO OMARSPORTS</span>
-        <span>🏆 PREMIER LEAGUE</span>
-        <span>🔥 TACTICS LAB IS READY</span>
-        <span>⚽ FOOTBALL NEWS & ANALYSIS</span>
-        <span>🏆 CHAMPIONS LEAGUE</span>
-        <span>⚽ WELCOME TO OMARSPORTS</span>
-        <span>🏆 PREMIER LEAGUE</span>
-    </div>
-</div>
+<section id="matches">
+  <div class="container">
+    <div class="subtitle">FIXTURES & RESULTS</div>
+    <h2 class="section-title">MATCH CENTER</h2>
 
-<!-- DASHBOARD -->
-
-<section class="section" id="dashboard">
-<div class="container">
-    <div class="section-head">
-        <div>
-            <div class="eyebrow">FOOTBALL OVERVIEW</div>
-            <h2>THE MATCHDAY HUB</h2>
-        </div>
-        <span class="tag">DEMO DASHBOARD</span>
+    <div class="card match">
+      <div>
+        <img src="https://media.api-sports.io/football/teams/42.png">
+        <strong>ARSENAL</strong>
+      </div>
+      <span>VS</span>
+      <div>
+        <img src="https://media.api-sports.io/football/teams/50.png">
+        <strong>MAN CITY</strong>
+      </div>
     </div>
 
-    <div class="featured">
-        <div class="card featured-match">
-            <div class="match-meta">
-                <span class="tag">FEATURED MATCH</span>
-                <span class="tag">DEMO</span>
-            </div>
-
-            <div class="match-teams">
-                <div>
-                    <img class="team-logo"
-                    src="https://media.api-sports.io/football/teams/42.png">
-                    <div class="team-name">ARSENAL</div>
-                    <div class="match-time">HOME</div>
-                </div>
-
-                <div>
-                    <div class="score">VS</div>
-                    <div class="match-time">PREMIER LEAGUE</div>
-                </div>
-
-                <div>
-                    <img class="team-logo"
-                    src="https://media.api-sports.io/football/teams/50.png">
-                    <div class="team-name">MAN CITY</div>
-                    <div class="match-time">AWAY</div>
-                </div>
-            </div>
-
-            <div class="match-note">
-                Contoh tampilan pertandingan • Bukan jadwal atau skor live
-            </div>
-
-            <div class="match-bottom">
-                <span class="muted" style="font-size:10px">MATCH CENTER</span>
-                <a href="#matches" class="btn btn-primary">VIEW MATCHES →</a>
-            </div>
-        </div>
-
-        <div class="quick-grid">
-            <div class="card quick-card">
-                <div class="small-title">⚽ MATCH CENTER</div>
-                <div class="number green">01</div>
-                <p>Match information</p>
-            </div>
-
-            <div class="card quick-card">
-                <div class="small-title">🏆 LEAGUE</div>
-                <div class="number">PL</div>
-                <p>League standings</p>
-            </div>
-
-            <div class="card quick-card">
-                <div class="small-title">🧠 TACTICS</div>
-                <div class="number">08</div>
-                <p>Formation options</p>
-            </div>
-
-            <div class="card quick-card">
-                <div class="small-title">🛡️ CLUBS</div>
-                <div class="number">04</div>
-                <p>Featured teams</p>
-            </div>
-        </div>
+    <div class="card match">
+      <div>
+        <img src="https://media.api-sports.io/football/teams/40.png">
+        <strong>LIVERPOOL</strong>
+      </div>
+      <span>VS</span>
+      <div>
+        <img src="https://media.api-sports.io/football/teams/66.png">
+        <strong>ASTON VILLA</strong>
+      </div>
     </div>
-</div>
+
+    <p style="color:var(--muted);font-size:11px">
+      Jadwal di atas adalah contoh tampilan, bukan jadwal resmi.
+    </p>
+  </div>
 </section>
 
-<!-- MATCHES -->
+<section id="standings">
+  <div class="container">
+    <div class="subtitle">LEAGUE TABLE</div>
+    <h2 class="section-title">LEAGUE STANDINGS</h2>
 
-<s
+    <div style="overflow-x:auto">
+      <table>
+        <thead>
+          <tr>
+            <th>POS</th><th>CLUB</th><th>MP</th>
+            <th>W</th><th>D</th><th>L</th><th>PTS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Arsenal</td><td>10</td><td>7</td><td>2</td><td>1</td><td>23</td></tr>
+          <tr><td>2</td><td>Man City</td><td>10</td><td>7</td><td>1</td><td>2</td><td>22</td></tr>
+          <tr><td>3</td><td>Liverpool</td><td>10</td><td>6</td><td>2</td><td>2</td><td>20</td></tr>
+          <tr><td>4</td><td>Aston Villa</td><td>10</td><td>5</td><td>2</td><td>3</td><td>17</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="clubs">
+  <div class="container">
+    <div class="subtitle">PICK YOUR SIDE</div>
+    <h2 class="section-title">FEATURED CLUBS</h2>
+
+    <div class="grid">
+      <div class="card club">
+        <img src="https://media.api-sports.io/football/teams/42.png">
+        <h3>Arsenal</h3>
+      </div>
+      <div class="card club">
+        <img src="https://media.api-sports.io/football/teams/50.png">
+        <h3>Manchester City</h3>
+      </div>
+      <div class="card club">
+        <img src="https://media.api-sports.io/football/teams/40.png">
+        <h3>Liverpool</h3>
+      </div>
+      <div class="card club">
+        <img src="https://media.api-sports.io/football/teams/66.png">
+        <h3>Aston Villa</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tactics">
+  <div class="container">
+    <div class="subtitle">BUILD YOUR DREAM TEAM</div>
+    <h2 class="section-title">TACTICS BUILDER</h2>
+
+    <div class="card" style="margin-bottom:15px">
+      <label>Pilih formasi: </label>
+      <select id="formation" onchange="buildTeam()">
+        <option>4-3-3</option>
+        <option>4-2-3-1</option>
+        <option>3-5-2</option>
+        <option>4-4-2</option>
+      </select>
+    </div>
+
+    <div class="pitch" id="pitch"></div>
+  </div>
+</section>
+
+<section id="news">
+  <div class="container">
+    <div class="subtitle">LATEST STORIES</div>
+    <h2 class="section-title">FOOTBALL NEWSROOM</h2>
+
+    <div class="grid">
+      <div class="card news">
+        <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=800">
+        <h3>Modern Football Tactics</h3>
+      </div>
+      <div class="card news">
+        <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=800">
+        <h3>Football Stadium Atmosphere</h3>
+      </div>
+      <div class="card news">
+        <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800">
+        <h3>Understanding Formations</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 OMARSPORTS — FOOTBALL UNIVERSE
+</footer>
+
+<script>
+const formations = {
+  "4-3-3": [
+    ["GK",90,50],["LB",72,15],["CB",75,38],
+    ["CB",75,62],["RB",72,85],["CM",53,28],
+    ["DM",58,50],["CM",53,72],["LW",27,17],
+    ["ST",18,50],["RW",27,83]
+  ],
+  "4-2-3-1": [
+    ["GK",90,50],["LB",72,15],["CB",75,38],
+    ["CB",75,62],["RB",72,85],["DM",60,35],
+    ["DM",60,65],["LM",40,15],["AM",40,50],
+    ["RM",40,85],["ST",18,50]
+  ],
+  "3-5-2": [
+    ["GK",90,50],["CB",75,22],["CB",77,50],
+    ["CB",75,78],["LWB",48,12],["CM",54,32],
+    ["DM",60,50],["CM",54,68],["RWB",48,88],
+    ["ST",20,35],["ST",20,65]
+  ],
+  "4-4-2": [
+    ["GK",90,50],["LB",72,15],["CB",75,38],
+    ["CB",75,62],["RB",72,85],["LM",48,15],
+    ["CM",53,38],["CM",53,62],["RM",48,85],
+    ["ST",20,37],["ST",20,63]
+  ]
+};
+
+function buildTeam() {
+  const selected = document.getElementById("formation").value;
+  const pitch = document.getElementById("pitch");
+
+  pitch.innerHTML = "";
+
+  formations[selected].forEach((player,index) => {
+    const badge = document.createElement("div");
+
+    badge.className = "player";
+    badge.textContent = player[0];
+    badge.style.top = player[1] + "%";
+    badge.style.left = player[2] + "%";
+
+    badge.onclick = () => {
+      const name = prompt("Masukkan nama pemain:", player[0]);
+      if(name) badge.textContent = name;
+    };
+
+    pitch.appendChild(badge);
+  });
+}
+
+buildTeam();
+</script>
+
+</body>
+</html>
