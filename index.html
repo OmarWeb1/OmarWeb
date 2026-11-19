@@ -4,552 +4,598 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OmarSports - Football Universe</title>
+<meta name="theme-color" content="#101116">
+<title>OMAR SPORTS | Football Universe</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 <style>
 :root {
-  --bg: #080d16;
-  --panel: #142238;
-  --green: #b8ff3b;
-  --white: #f4f7fb;
-  --muted: #8b9bb0;
-  --line: #26374d;
+  --red:#f21f2b;
+  --dark:#101116;
+  --card:#191a22;
+  --muted:#aeb2bd;
+  --white:#fff;
 }
 
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior:smooth; }
 
 body {
-  background: var(--bg);
-  color: var(--white);
-  font-family: Inter, sans-serif;
+  background:var(--dark);
+  color:white;
+  font-family:Inter,sans-serif;
+  overflow-x:hidden;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.container {
-  width: 90%;
-  max-width: 1180px;
-  margin: auto;
-}
+a {text-decoration:none;color:inherit;}
 
 header {
-  background: #080d16;
-  border-bottom: 1px solid var(--line);
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:#101116ed;
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid #ffffff14;
 }
 
 nav {
-  min-height: 75px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 15px;
+  max-width:1250px;
+  margin:auto;
+  padding:18px 25px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
 .logo {
-  font: 900 30px "Barlow Condensed";
+  font-family:Orbitron,sans-serif;
+  font-size:23px;
+  font-weight:900;
 }
 
-.logo span, .green { color: var(--green); }
+.logo span {color:var(--red);}
 
-nav a {
-  margin-left: 18px;
-  font-size: 12px;
-  font-weight: bold;
+.nav-links {
+  display:flex;
+  gap:25px;
+  align-items:center;
 }
 
-nav a:hover { color: var(--green); }
+.nav-links a {
+  font-size:12px;
+  font-weight:700;
+  color:#ddd;
+  transition:.3s;
+}
+
+.nav-links a:hover {color:var(--red);}
+
+.menu-btn {
+  display:none;
+  background:none;
+  border:0;
+  color:white;
+  font-size:24px;
+  cursor:pointer;
+}
+
+/* HERO */
 
 .hero {
-  min-height: 480px;
-  display: flex;
-  align-items: center;
+  min-height:620px;
+  display:flex;
+  align-items:center;
+  padding:80px 8%;
   background:
-    linear-gradient(90deg,#080d16 10%,#080d16bb),
-    url("https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1600")
-    center/cover;
+  linear-gradient(90deg,#101116 5%,#101116dc 50%,#10111655),
+  url("https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1800")
+  center/cover;
 }
 
-.hero h1 {
-  font: 900 clamp(55px,9vw,95px)/.9 "Barlow Condensed";
-  margin: 20px 0;
+.hero-content {max-width:700px;}
+
+.tag {
+  color:var(--red);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:4px;
 }
+
+h1 {
+  font-family:Orbitron,sans-serif;
+  font-size:clamp(40px,7vw,78px);
+  line-height:1.15;
+  margin:22px 0;
+}
+
+h1 span {color:var(--red);}
 
 .hero p {
-  max-width: 520px;
-  color: #c4ceda;
-  line-height: 1.8;
-  font-size: 14px;
+  color:var(--muted);
+  line-height:1.9;
+  max-width:550px;
+  font-size:14px;
 }
 
 .btn {
-  display: inline-block;
-  background: var(--green);
-  color: #080d16;
-  padding: 13px 20px;
-  border-radius: 7px;
-  font-weight: 800;
-  font-size: 12px;
-  margin-top: 22px;
+  display:inline-block;
+  background:var(--red);
+  padding:15px 25px;
+  border-radius:8px;
+  margin-top:28px;
+  font-size:13px;
+  font-weight:800;
+  transition:.3s;
 }
 
-section { padding: 60px 0; }
+.btn:hover {
+  transform:translateY(-5px);
+  box-shadow:0 8px 25px #f21f2b65;
+}
+
+/* GENERAL SECTION */
+
+.container {
+  max-width:1250px;
+  margin:auto;
+  padding:75px 25px;
+}
 
 .section-title {
-  font: 800 35px "Barlow Condensed";
-  margin-bottom: 25px;
+  font-family:Orbitron,sans-serif;
+  font-size:27px;
+  margin-bottom:12px;
 }
 
-.subtitle {
-  color: var(--green);
-  font-size: 10px;
-  letter-spacing: 2px;
-  font-weight: bold;
-  margin-bottom: 8px;
+.section-desc {
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.7;
+  margin-bottom:32px;
 }
+
+/* CARDS */
 
 .grid {
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-  gap: 15px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:22px;
 }
 
 .card {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 20px;
+  background:var(--card);
+  border:1px solid #ffffff12;
+  border-radius:15px;
+  overflow:hidden;
+  transition:.3s;
 }
 
-.club {
-  text-align: center;
-  transition: .2s;
+.card:hover {
+  transform:translateY(-8px);
+  border-color:var(--red);
+  box-shadow:0 12px 30px #0005;
 }
 
-.club:hover {
-  border-color: var(--green);
-  transform: translateY(-4px);
+.card img {
+  width:100%;
+  height:175px;
+  object-fit:cover;
 }
 
-.club img {
-  width: 75px;
-  height: 75px;
-  object-fit: contain;
+.card-body {padding:22px;}
+
+.card h3 {
+  font-size:17px;
+  margin-bottom:12px;
 }
 
-.club h3 {
-  margin-top: 12px;
-  font-size: 13px;
+.card p {
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.8;
 }
 
-.match {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
-  gap: 10px;
-  margin-bottom: 12px;
+.card a {
+  color:var(--red);
+  display:inline-block;
+  margin-top:17px;
+  font-size:12px;
+  font-weight:800;
 }
 
-.match img {
-  width: 35px;
-  height: 35px;
-  object-fit: contain;
-  display: block;
-  margin: auto auto 8px;
+/* STATS */
+
+.stats {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin-top:40px;
 }
 
-.match strong { font-size: 12px; }
-.match span { color: var(--green); font-weight: 900; }
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  background: var(--panel);
-  border-radius: 10px;
-  overflow: hidden;
+.stat {
+  text-align:center;
+  background:var(--card);
+  padding:28px 10px;
+  border-radius:13px;
+  border:1px solid #ffffff12;
 }
 
-th, td {
-  padding: 14px;
-  border-bottom: 1px solid var(--line);
-  text-align: center;
-  font-size: 12px;
+.stat h2 {
+  font-family:Orbitron,sans-serif;
+  font-size:26px;
+  color:var(--red);
 }
 
-th { color: var(--green); }
-
-.pitch {
-  max-width: 480px;
-  height: 570px;
-  margin: auto;
-  position: relative;
-  border: 3px solid white;
-  background: repeating-linear-gradient(
-    0deg,#176b43 0 70px,#12613c 70px 140px
-  );
+.stat p {
+  color:var(--muted);
+  font-size:11px;
+  margin-top:10px;
+  letter-spacing:1px;
 }
 
-.pitch::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  border-top: 2px solid white;
+/* CLUBS */
+
+.club-card {
+  text-align:center;
+  padding:30px 18px;
 }
 
-.player {
-  position: absolute;
-  transform: translate(-50%,-50%);
-  background: var(--green);
-  color: #080d16;
-  padding: 7px 10px;
-  border-radius: 50%;
-  font-size: 11px;
-  font-weight: 900;
-  cursor: pointer;
+.club-logo {
+  font-size:48px;
+  margin-bottom:15px;
 }
 
-.news img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 8px;
+/* SOCIAL MEDIA */
+
+.social-section {
+  text-align:center;
+  background:
+  radial-gradient(ellipse at center,#25202a 0%,#101116 70%);
+  border-radius:20px;
 }
 
-.news h3 {
-  font-size: 14px;
-  margin-top: 12px;
+.social-media {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:15px;
+  margin-top:35px;
 }
+
+.social-btn {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:11px;
+  min-width:155px;
+  padding:16px 22px;
+  border:1px solid #34343d;
+  border-radius:12px;
+  background:#191a22;
+  color:white;
+  font-size:13px;
+  font-weight:800;
+  transition:.3s;
+}
+
+.social-btn i {font-size:22px;}
+
+.social-btn:hover {
+  transform:translateY(-7px);
+  border-color:var(--red);
+  box-shadow:0 8px 25px #f21f2b35;
+}
+
+.instagram:hover {color:#e879c5;}
+.twitter:hover {color:#55acee;}
+.youtube:hover {color:#ff3333;}
+.whatsapp:hover {color:#25d366;}
+
+/* FOOTER */
 
 footer {
-  padding: 35px 0;
-  border-top: 1px solid var(--line);
-  color: var(--muted);
-  text-align: center;
-  font-size: 11px;
+  border-top:1px solid #ffffff15;
+  text-align:center;
+  padding:40px 20px;
+  color:var(--muted);
+  font-size:13px;
 }
 
-@media(max-width:800px) {
-  .grid { grid-template-columns: repeat(2,1fr); }
-  nav { padding: 15px 0; }
-  nav a { margin: 5px; }
+footer strong {color:var(--red);}
+
+.back-top {
+  position:fixed;
+  bottom:22px;
+  right:22px;
+  width:45px;
+  height:45px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--red);
+  border-radius:50%;
+  z-index:50;
+  box-shadow:0 5px 20px #0007;
 }
 
-@media(max-width:500px) {
-  .grid { grid-template-columns: 1fr 1fr; }
-  .hero { min-height: 400px; }
-  .section-title { font-size: 28px; }
-  th,td { padding: 9px 5px; }
+/* MOBILE */
+
+@media(max-width:700px) {
+  .menu-btn {display:block;}
+
+  .nav-links {
+    display:none;
+    position:absolute;
+    top:65px;
+    left:0;
+    width:100%;
+    background:#15161d;
+    flex-direction:column;
+    padding:25px;
+    gap:23px;
+  }
+
+  .nav-links.active {display:flex;}
+
+  .hero {
+    min-height:520px;
+    padding:60px 7%;
+  }
+
+  .container {padding:55px 18px;}
+
+  .stats {grid-template-columns:1fr;}
+
+  .social-btn {
+    flex:1 1 40%;
+    min-width:130px;
+  }
 }
 </style>
 </head>
 
 <body>
 
+<!-- NAVIGATION -->
 <header>
-  <div class="container">
-    <nav>
-      <div class="logo">OMAR<span>SPORTS</span></div>
-      <div>
-        <a href="#home">HOME</a>
-        <a href="#matches">MATCHES</a>
-        <a href="#standings">LEAGUE</a>
-        <a href="#clubs">CLUBS</a>
-        <a href="#tactics">TACTICS</a>
-        <a href="#news">NEWS</a>
-      </div>
-    </nav>
+<nav>
+  <a href="#home" class="logo">OMAR<span>SPORTS</span></a>
+
+  <button class="menu-btn" onclick="toggleMenu()" aria-label="Menu">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+
+  <div class="nav-links" id="navLinks">
+    <a href="#home">HOME</a>
+    <a href="#features">FEATURES</a>
+    <a href="#clubs">CLUBS</a>
+    <a href="#social">SOCIAL MEDIA</a>
   </div>
+</nav>
 </header>
 
+<!-- HERO -->
 <section class="hero" id="home">
-  <div class="container">
-    <div class="subtitle">YOUR WORLD. YOUR FOOTBALL.</div>
-    <h1>LIVE THE<br><span class="green">BEAUTIFUL</span><br>GAME.</h1>
+  <div class="hero-content">
+    <div class="tag">WELCOME TO THE FOOTBALL UNIVERSE</div>
+
+    <h1>
+      MORE THAN<br>
+      JUST <span>FOOTBALL.</span>
+    </h1>
+
     <p>
-      Jelajahi pertandingan, klub, pemain, klasemen,
-      berita, dan strategi sepak bola dalam satu tempat.
+      Explore the world of football. Discover clubs,
+      tactics, football stories, match updates and
+      everything about the beautiful game.
     </p>
-    <a href="#matches" class="btn">EXPLORE MATCH CENTER ↗</a>
+
+    <a href="#features" class="btn">
+      EXPLORE NOW
+      <i class="fa-solid fa-arrow-right"></i>
+    </a>
   </div>
 </section>
 
-<section id="matches">
-  <div class="container">
-    <div class="subtitle">FIXTURES & RESULTS</div>
-    <h2 class="section-title">MATCH CENTER</h2>
+<!-- FEATURES -->
+<section class="container" id="features">
 
-    <div class="card match">
-      <div>
-        <img src="https://media.api-sports.io/football/teams/42.png">
-        <strong>ARSENAL</strong>
-      </div>
-      <span>VS</span>
-      <div>
-        <img src="https://media.api-sports.io/football/teams/50.png">
-        <strong>MAN CITY</strong>
+  <h2 class="section-title">FOOTBALL FEATURES</h2>
+
+  <p class="section-desc">
+    Explore everything about your favorite sport.
+  </p>
+
+  <div class="grid">
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=700" alt="Football match">
+      <div class="card-body">
+        <h3>Football News</h3>
+        <p>Discover football stories, updates and exciting developments.</p>
+        <a href="https://www.bbc.com/sport/football" target="_blank">READ NEWS →</a>
       </div>
     </div>
 
-    <div class="card match">
-      <div>
-        <img src="https://media.api-sports.io/football/teams/40.png">
-        <strong>LIVERPOOL</strong>
-      </div>
-      <span>VS</span>
-      <div>
-        <img src="https://media.api-sports.io/football/teams/66.png">
-        <strong>ASTON VILLA</strong>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1518604666860-9ed391f76460?w=700" alt="Football stadium">
+      <div class="card-body">
+        <h3>Match Center</h3>
+        <p>Follow match schedules, scores and football competitions.</p>
+        <a href="https://www.espn.com/soccer/" target="_blank">VIEW MATCHES →</a>
       </div>
     </div>
 
-    <p style="color:var(--muted);font-size:11px">
-      Jadwal di atas adalah contoh tampilan, bukan jadwal resmi.
-    </p>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=700" alt="Football tactics">
+      <div class="card-body">
+        <h3>Football Tactics</h3>
+        <p>Learn formations, strategies and different playing styles.</p>
+        <a href="https://www.coachesvoice.com/" target="_blank">EXPLORE →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1521412644187-c49fa049e84d?w=700" alt="Football field">
+      <div class="card-body">
+        <h3>Football World</h3>
+        <p>Explore legendary teams, players and football history.</p>
+        <a href="https://www.fifa.com/" target="_blank">DISCOVER →</a>
+      </div>
+    </div>
+
   </div>
-</section>
 
-<section id="standings">
-  <div class="container">
-    <div class="subtitle">LEAGUE TABLE</div>
-    <h2 class="section-title">LEAGUE STANDINGS</h2>
-
-    <div style="overflow-x:auto">
-      <table>
-        <thead>
-          <tr>
-            <th>POS</th><th>CLUB</th><th>MP</th>
-            <th>W</th><th>D</th><th>L</th><th>PTS</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>1</td><td>Arsenal</td><td>10</td><td>7</td><td>2</td><td>1</td><td>23</td></tr>
-          <tr><td>2</td><td>Man City</td><td>10</td><td>7</td><td>1</td><td>2</td><td>22</td></tr>
-          <tr><td>3</td><td>Liverpool</td><td>10</td><td>6</td><td>2</td><td>2</td><td>20</td></tr>
-          <tr><td>4</td><td>Aston Villa</td><td>10</td><td>5</td><td>2</td><td>3</td><td>17</td></tr>
-        </tbody>
-      </table>
+  <div class="stats">
+    <div class="stat">
+      <h2>GLOBAL</h2>
+      <p>FOOTBALL COMMUNITY</p>
     </div>
-  </div>
-</section>
 
-<section id="clubs">
-  <div class="container">
-    <div class="subtitle">PICK YOUR SIDE</div>
-    <h2 class="section-title">FEATURED CLUBS</h2>
+    <div class="stat">
+      <h2>24/7</h2>
+      <p>FOOTBALL PASSION</p>
+    </div>
 
-    <div class="grid">
-      <div class="card club">
-        <img src="https://media.api-sports.io/football/teams/42.png">
-        <h3>Arsenal</h3>
-      </div>
-      <div class="card club">
-        <img src="https://media.api-sports.io/football/teams/50.png">
-        <h3>Manchester City</h3>
-      </div>
-      <div class="card club">
-        <img src="https://media.api-sports.io/football/teams/40.png">
-        <h3>Liverpool</h3>
-      </div>
-      <div class="card club">
-        <img src="https://media.api-sports.io/football/teams/66.png">
-        <h3>Aston Villa</h3>
-      </div>
+    <div class="stat">
+      <h2>ONE</h2>
+      <p>LOVE FOR FOOTBALL</p>
     </div>
   </div>
+
 </section>
 
-<section id="tactics">
-  <div class="container">
-    <div class="subtitle">BUILD YOUR DREAM TEAM</div>
-    <h2 class="section-title">TACTICS BUILDER</h2>
+<!-- CLUBS -->
+<section class="container" id="clubs">
 
-    <div class="card" style="margin-bottom:15px">
-      <label>Pilih formasi: </label>
-      <select id="formation" onchange="buildTeam()">
-        <option>4-3-3</option>
-        <option>4-2-3-1</option>
-        <option>3-5-2</option>
-        <option>4-4-2</option>
-      </select>
+  <h2 class="section-title">POPULAR FOOTBALL CLUBS</h2>
+
+  <p class="section-desc">
+    Explore some of the biggest football clubs.
+  </p>
+
+  <div class="grid">
+
+    <div class="card club-card">
+      <div class="club-logo">🔴</div>
+      <h3>Arsenal FC</h3>
+      <p>The Gunners — North London, England.</p>
+      <a href="https://www.arsenal.com/" target="_blank">OFFICIAL WEBSITE →</a>
     </div>
 
-    <div class="pitch" id="pitch"></div>
-  </div>
-</section>
-
-<section id="news">
-  <div class="container">
-    <div class="subtitle">LATEST STORIES</div>
-    <h2 class="section-title">FOOTBALL NEWSROOM</h2>
-
-    <div class="grid">
-      <div class="card news">
-        <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=800">
-        <h3>Modern Football Tactics</h3>
-      </div>
-      <div class="card news">
-        <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=800">
-        <h3>Football Stadium Atmosphere</h3>
-      </div>
-      <div class="card news">
-        <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800">
-        <h3>Understanding Formations</h3>
-      </div>
+    <div class="card club-card">
+      <div class="club-logo">🔵</div>
+      <h3>Manchester City</h3>
+      <p>The Citizens — Manchester, England.</p>
+      <a href="https://www.mancity.com/" target="_blank">OFFICIAL WEBSITE →</a>
     </div>
+
+    <div class="card club-card">
+      <div class="club-logo">🔴</div>
+      <h3>Liverpool FC</h3>
+      <p>The Reds — Liverpool, England.</p>
+      <a href="https://www.liverpoolfc.com/" target="_blank">OFFICIAL WEBSITE →</a>
+    </div>
+
+    <div class="card club-card">
+      <div class="club-logo">🟣</div>
+      <h3>Aston Villa</h3>
+      <p>The Villans — Birmingham, England.</p>
+      <a href="https://www.avfc.co.uk/" target="_blank">OFFICIAL WEBSITE →</a>
+    </div>
+
   </div>
+
 </section>
 
+<!-- SOCIAL MEDIA -->
+<section class="container social-section" id="social">
+
+  <div class="tag">CONNECT WITH US</div>
+
+  <h2 class="section-title" style="margin-top:18px">
+    FOLLOW <span style="color:#f21f2b">OMAR SPORTS</span>
+  </h2>
+
+  <p class="section-desc">
+    Follow our social media and stay connected
+    with the football community.
+  </p>
+
+  <div class="social-media">
+
+    <!-- GANTI USERNAME -->
+    <a href="https://instagram.com/USERNAME"
+       target="_blank" rel="noopener"
+       class="social-btn instagram">
+      <i class="fa-brands fa-instagram"></i>
+      <span>Instagram</span>
+    </a>
+
+    <a href="https://x.com/USERNAME"
+       target="_blank" rel="noopener"
+       class="social-btn twitter">
+      <i class="fa-brands fa-x-twitter"></i>
+      <span>Twitter / X</span>
+    </a>
+
+    <a href="https://youtube.com/@USERNAME"
+       target="_blank" rel="noopener"
+       class="social-btn youtube">
+      <i class="fa-brands fa-youtube"></i>
+      <span>YouTube</span>
+    </a>
+
+    <!-- GANTI NOMOR WHATSAPP -->
+    <a href="https://wa.me/628XXXXXXXXXX"
+       target="_blank" rel="noopener"
+       class="social-btn whatsapp">
+      <i class="fa-brands fa-whatsapp"></i>
+      <span>WhatsApp</span>
+    </a>
+
+  </div>
+
+</section>
+
+<!-- FOOTER -->
 <footer>
-  © 2026 OMARSPORTS — FOOTBALL UNIVERSE
+  <p>
+    © 2026 <strong>OMAR SPORTS</strong>.
+    All Rights Reserved.
+  </p>
+
+  <p style="margin-top:12px">
+    BUILT FOR THE LOVE OF FOOTBALL ⚽
+  </p>
 </footer>
 
+<!-- BACK TO TOP -->
+<a href="#home" class="back-top" aria-label="Back to top">
+  <i class="fa-solid fa-arrow-up"></i>
+</a>
+
 <script>
-const formations = {
-  "4-3-3": [
-    ["GK",90,50],["LB",72,15],["CB",75,38],
-    ["CB",75,62],["RB",72,85],["CM",53,28],
-    ["DM",58,50],["CM",53,72],["LW",27,17],
-    ["ST",18,50],["RW",27,83]
-  ],
-  "4-2-3-1": [
-    ["GK",90,50],["LB",72,15],["CB",75,38],
-    ["CB",75,62],["RB",72,85],["DM",60,35],
-    ["DM",60,65],["LM",40,15],["AM",40,50],
-    ["RM",40,85],["ST",18,50]
-  ],
-  "3-5-2": [
-    ["GK",90,50],["CB",75,22],["CB",77,50],
-    ["CB",75,78],["LWB",48,12],["CM",54,32],
-    ["DM",60,50],["CM",54,68],["RWB",48,88],
-    ["ST",20,35],["ST",20,65]
-  ],
-  "4-4-2": [
-    ["GK",90,50],["LB",72,15],["CB",75,38],
-    ["CB",75,62],["RB",72,85],["LM",48,15],
-    ["CM",53,38],["CM",53,62],["RM",48,85],
-    ["ST",20,37],["ST",20,63]
-  ]
-};
+function toggleMenu() {
+  document.getElementById("navLinks")
+    .classList.toggle("active");
+}
 
-function buildTeam() {
-  const selected = document.getElementById("formation").value;
-  const pitch = document.getElementById("pitch");
-
-  pitch.innerHTML = "";
-
-  formations[selected].forEach((player,index) => {
-    const badge = document.createElement("div");
-
-    badge.className = "player";
-    badge.textContent = player[0];
-    badge.style.top = player[1] + "%";
-    badge.style.left = player[2] + "%";
-
-    badge.onclick = () => {
-      const name = prompt("Masukkan nama pemain:", player[0]);
-      if(name) badge.textContent = name;
-    };
-
-    pitch.appendChild(badge);
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", () => {
+    document.getElementById("navLinks")
+      .classList.remove("active");
   });
-}
-
-<!-- SOCIAL MEDIA OMAR SPORTS -->
-<div class="social-media">
-  <a href="https://instagram.com/USERNAME"
-     target="_blank" class="social-btn instagram">
-    <i class="fa-brands fa-instagram"></i>
-    <span>Instagram</span>
-  </a>
-
-  <a href="https://x.com/USERNAME"
-     target="_blank" class="social-btn twitter">
-    <i class="fa-brands fa-x-twitter"></i>
-    <span>Twitter</span>
-  </a>
-
-  <a href="https://youtube.com/@USERNAME"
-     target="_blank" class="social-btn youtube">
-    <i class="fa-brands fa-youtube"></i>
-    <span>YouTube</span>
-  </a>
-
-  <a href="https://wa.me/628XXXXXXXXXX"
-     target="_blank" class="social-btn whatsapp">
-    <i class="fa-brands fa-whatsapp"></i>
-    <span>WhatsApp</span>
-  </a>
-</div>
-
-<!-- ICON LIBRARY -->
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
-<style>
-.social-media {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 14px;
-  padding: 30px 15px;
-  background: #101116;
-}
-
-.social-btn {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 13px 21px;
-  border: 1px solid #34343d;
-  border-radius: 12px;
-  color: white;
-  background: #191a22;
-  text-decoration: none;
-  font-weight: 700;
-  transition: .3s ease;
-}
-
-.social-btn i {
-  font-size: 21px;
-}
-
-.social-btn:hover {
-  transform: translateY(-6px);
-  border-color: #f21f2b;
-  box-shadow: 0 8px 25px #f21f2b35;
-}
-
-.instagram:hover { color: #e879c5; }
-.twitter:hover { color: #55acee; }
-.youtube:hover { color: #ff3333; }
-.whatsapp:hover { color: #25d366; }
-
-@media(max-width:480px) {
-  .social-btn {
-    flex: 1 1 40%;
-    justify-content: center;
-  }
-}
-</style>
-
-buildTeam();
+});
 </script>
 
 </body>
