@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -6,597 +5,138 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#101116">
 <title>OMAR SPORTS | Football Universe</title>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
 <style>
-:root {
-  --red:#f21f2b;
-  --dark:#101116;
-  --card:#191a22;
-  --muted:#aeb2bd;
-  --white:#fff;
-}
-
-* {
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-html { scroll-behavior:smooth; }
-
-body {
-  background:var(--dark);
-  color:white;
-  font-family:Inter,sans-serif;
-  overflow-x:hidden;
-}
-
-a {text-decoration:none;color:inherit;}
-
-header {
-  position:sticky;
-  top:0;
-  z-index:1000;
-  background:#101116ed;
-  backdrop-filter:blur(15px);
-  border-bottom:1px solid #ffffff14;
-}
-
-nav {
-  max-width:1250px;
-  margin:auto;
-  padding:18px 25px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.logo {
-  font-family:Orbitron,sans-serif;
-  font-size:23px;
-  font-weight:900;
-}
-
-.logo span {color:var(--red);}
-
-.nav-links {
-  display:flex;
-  gap:25px;
-  align-items:center;
-}
-
-.nav-links a {
-  font-size:12px;
-  font-weight:700;
-  color:#ddd;
-  transition:.3s;
-}
-
-.nav-links a:hover {color:var(--red);}
-
-.menu-btn {
-  display:none;
-  background:none;
-  border:0;
-  color:white;
-  font-size:24px;
-  cursor:pointer;
-}
-
-/* HERO */
-
-.hero {
-  min-height:620px;
-  display:flex;
-  align-items:center;
-  padding:80px 8%;
-  background:
-  linear-gradient(90deg,#101116 5%,#101116dc 50%,#10111655),
-  url("https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1800")
-  center/cover;
-}
-
-.hero-content {max-width:700px;}
-
-.tag {
-  color:var(--red);
-  font-size:12px;
-  font-weight:800;
-  letter-spacing:4px;
-}
-
-h1 {
-  font-family:Orbitron,sans-serif;
-  font-size:clamp(40px,7vw,78px);
-  line-height:1.15;
-  margin:22px 0;
-}
-
-h1 span {color:var(--red);}
-
-.hero p {
-  color:var(--muted);
-  line-height:1.9;
-  max-width:550px;
-  font-size:14px;
-}
-
-.btn {
-  display:inline-block;
-  background:var(--red);
-  padding:15px 25px;
-  border-radius:8px;
-  margin-top:28px;
-  font-size:13px;
-  font-weight:800;
-  transition:.3s;
-}
-
-.btn:hover {
-  transform:translateY(-5px);
-  box-shadow:0 8px 25px #f21f2b65;
-}
-
-/* GENERAL SECTION */
-
-.container {
-  max-width:1250px;
-  margin:auto;
-  padding:75px 25px;
-}
-
-.section-title {
-  font-family:Orbitron,sans-serif;
-  font-size:27px;
-  margin-bottom:12px;
-}
-
-.section-desc {
-  color:var(--muted);
-  font-size:14px;
-  line-height:1.7;
-  margin-bottom:32px;
-}
-
-/* CARDS */
-
-.grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-  gap:22px;
-}
-
-.card {
-  background:var(--card);
-  border:1px solid #ffffff12;
-  border-radius:15px;
-  overflow:hidden;
-  transition:.3s;
-}
-
-.card:hover {
-  transform:translateY(-8px);
-  border-color:var(--red);
-  box-shadow:0 12px 30px #0005;
-}
-
-.card img {
-  width:100%;
-  height:175px;
-  object-fit:cover;
-}
-
-.card-body {padding:22px;}
-
-.card h3 {
-  font-size:17px;
-  margin-bottom:12px;
-}
-
-.card p {
-  color:var(--muted);
-  font-size:13px;
-  line-height:1.8;
-}
-
-.card a {
-  color:var(--red);
-  display:inline-block;
-  margin-top:17px;
-  font-size:12px;
-  font-weight:800;
-}
-
-/* STATS */
-
-.stats {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-  margin-top:40px;
-}
-
-.stat {
-  text-align:center;
-  background:var(--card);
-  padding:28px 10px;
-  border-radius:13px;
-  border:1px solid #ffffff12;
-}
-
-.stat h2 {
-  font-family:Orbitron,sans-serif;
-  font-size:26px;
-  color:var(--red);
-}
-
-.stat p {
-  color:var(--muted);
-  font-size:11px;
-  margin-top:10px;
-  letter-spacing:1px;
-}
-
-/* CLUBS */
-
-.club-card {
-  text-align:center;
-  padding:30px 18px;
-}
-
-.club-logo {
-  font-size:48px;
-  margin-bottom:15px;
-}
-
-/* SOCIAL MEDIA */
-
-.social-section {
-  text-align:center;
-  background:
-  radial-gradient(ellipse at center,#25202a 0%,#101116 70%);
-  border-radius:20px;
-}
-
-.social-media {
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:15px;
-  margin-top:35px;
-}
-
-.social-btn {
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:11px;
-  min-width:155px;
-  padding:16px 22px;
-  border:1px solid #34343d;
-  border-radius:12px;
-  background:#191a22;
-  color:white;
-  font-size:13px;
-  font-weight:800;
-  transition:.3s;
-}
-
-.social-btn i {font-size:22px;}
-
-.social-btn:hover {
-  transform:translateY(-7px);
-  border-color:var(--red);
-  box-shadow:0 8px 25px #f21f2b35;
-}
-
-.instagram:hover {color:#e879c5;}
-.twitter:hover {color:#55acee;}
-.youtube:hover {color:#ff3333;}
-.whatsapp:hover {color:#25d366;}
-
-/* FOOTER */
-
-footer {
-  border-top:1px solid #ffffff15;
-  text-align:center;
-  padding:40px 20px;
-  color:var(--muted);
-  font-size:13px;
-}
-
-footer strong {color:var(--red);}
-
-.back-top {
-  position:fixed;
-  bottom:22px;
-  right:22px;
-  width:45px;
-  height:45px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:var(--red);
-  border-radius:50%;
-  z-index:50;
-  box-shadow:0 5px 20px #0007;
-}
-
-/* MOBILE */
-
-@media(max-width:700px) {
-  .menu-btn {display:block;}
-
-  .nav-links {
-    display:none;
-    position:absolute;
-    top:65px;
-    left:0;
-    width:100%;
-    background:#15161d;
-    flex-direction:column;
-    padding:25px;
-    gap:23px;
-  }
-
-  .nav-links.active {display:flex;}
-
-  .hero {
-    min-height:520px;
-    padding:60px 7%;
-  }
-
-  .container {padding:55px 18px;}
-
-  .stats {grid-template-columns:1fr;}
-
-  .social-btn {
-    flex:1 1 40%;
-    min-width:130px;
-  }
+:root{--red:#f21f2b;--dark:#101116;--card:#191a22;--muted:#aeb2bd;--white:#fff}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--dark);color:white;font-family:Inter,sans-serif;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+header{position:sticky;top:0;z-index:1000;background:#101116ed;backdrop-filter:blur(15px);border-bottom:1px solid #ffffff14}
+nav{max-width:1250px;margin:auto;padding:18px 25px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:Orbitron,sans-serif;font-size:23px;font-weight:900}
+.logo span{color:var(--red)}
+.nav-links{display:flex;gap:25px;align-items:center}
+.nav-links a{font-size:12px;font-weight:700;color:#ddd;transition:.3s}
+.nav-links a:hover{color:var(--red)}
+.menu-btn{display:none;background:none;border:0;color:white;font-size:24px;cursor:pointer}
+.hero{min-height:620px;display:flex;align-items:center;padding:80px 8%;background:linear-gradient(90deg,#101116 5%,#101116dc 50%,#10111655),url("https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1800") center/cover}
+.hero-content{max-width:700px}
+.tag{color:var(--red);font-size:12px;font-weight:800;letter-spacing:4px}
+h1{font-family:Orbitron,sans-serif;font-size:clamp(40px,7vw,78px);line-height:1.15;margin:22px 0}
+h1 span{color:var(--red)}
+.hero p{color:var(--muted);line-height:1.9;max-width:550px;font-size:14px}
+.btn{display:inline-block;background:var(--red);padding:15px 25px;border-radius:8px;margin-top:28px;font-size:13px;font-weight:800;transition:.3s}
+.btn:hover{transform:translateY(-5px);box-shadow:0 8px 25px #f21f2b65}
+.container{max-width:1250px;margin:auto;padding:75px 25px}
+.section-title{font-family:Orbitron,sans-serif;font-size:27px;margin-bottom:12px}
+.section-desc{color:var(--muted);font-size:14px;line-height:1.7;margin-bottom:32px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px}
+.card{background:var(--card);border:1px solid #ffffff12;border-radius:15px;overflow:hidden;transition:.3s}
+.card:hover{transform:translateY(-8px);border-color:var(--red);box-shadow:0 12px 30px #0005}
+.card img{width:100%;height:175px;object-fit:cover}
+.card-body{padding:22px}
+.card h3{font-size:17px;margin-bottom:12px}
+.card p{color:var(--muted);font-size:13px;line-height:1.8}
+.card a{color:var(--red);display:inline-block;margin-top:17px;font-size:12px;font-weight:800}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+.stat{text-align:center;background:var(--card);padding:28px 10px;border-radius:13px;border:1px solid #ffffff12}
+.stat h2{font-family:Orbitron,sans-serif;font-size:26px;color:var(--red)}
+.stat p{color:var(--muted);font-size:11px;margin-top:10px;letter-spacing:1px}
+.club-card{text-align:center;padding:30px 18px}
+.club-logo{height:82px;display:flex;align-items:center;justify-content:center;margin-bottom:15px}
+.club-logo img{width:70px;height:70px;object-fit:contain}
+.social-section{text-align:center;background:radial-gradient(ellipse at center,#25202a 0%,#101116 70%);border-radius:20px}
+.social-media{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:15px;margin-top:35px}
+.social-btn{display:flex;align-items:center;justify-content:center;gap:11px;min-width:155px;padding:16px 22px;border:1px solid #34343d;border-radius:12px;background:#191a22;color:white;font-size:13px;font-weight:800;transition:.3s}
+.social-btn i{font-size:22px}
+.social-btn:hover{transform:translateY(-7px);border-color:var(--red);box-shadow:0 8px 25px #f21f2b35}
+.instagram:hover{color:#e879c5}.twitter:hover{color:#55acee}.youtube:hover{color:#ff3333}.whatsapp:hover{color:#25d366}
+footer{border-top:1px solid #ffffff15;text-align:center;padding:40px 20px;color:var(--muted);font-size:13px}
+footer strong{color:var(--red)}
+.back-top{position:fixed;bottom:22px;right:22px;width:45px;height:45px;display:flex;align-items:center;justify-content:center;background:var(--red);border-radius:50%;z-index:50;box-shadow:0 5px 20px #0007}
+@media(max-width:700px){
+.menu-btn{display:block}
+.nav-links{display:none;position:absolute;top:65px;left:0;width:100%;background:#15161d;flex-direction:column;padding:25px;gap:23px}
+.nav-links.active{display:flex}
+.hero{min-height:520px;padding:60px 7%}
+.container{padding:55px 18px}
+.stats{grid-template-columns:1fr}
+.social-btn{flex:1 1 40%;min-width:130px}
 }
 </style>
 </head>
-
 <body>
-
-<!-- NAVIGATION -->
 <header>
 <nav>
-  <a href="#home" class="logo">OMAR<span>SPORTS</span></a>
-
-  <button class="menu-btn" onclick="toggleMenu()" aria-label="Menu">
-    <i class="fa-solid fa-bars"></i>
-  </button>
-
-  <div class="nav-links" id="navLinks">
-    <a href="#home">HOME</a>
-    <a href="#features">FEATURES</a>
-    <a href="#clubs">CLUBS</a>
-    <a href="#social">SOCIAL MEDIA</a>
-  </div>
+<a href="#home" class="logo">OMAR<span>SPORTS</span></a>
+<button class="menu-btn" onclick="toggleMenu()" aria-label="Buka menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+<div class="nav-links" id="navLinks">
+<a href="#home">HOME</a><a href="#features">FEATURES</a><a href="#clubs">CLUBS</a><a href="#social">SOCIAL MEDIA</a>
+</div>
 </nav>
 </header>
-
-<!-- HERO -->
 <section class="hero" id="home">
-  <div class="hero-content">
-    <div class="tag">WELCOME TO THE FOOTBALL UNIVERSE</div>
-
-    <h1>
-      MORE THAN<br>
-      JUST <span>FOOTBALL.</span>
-    </h1>
-
-    <p>
-      Explore the world of football. Discover clubs,
-      tactics, football stories, match updates and
-      everything about the beautiful game.
-    </p>
-
-    <a href="#features" class="btn">
-      EXPLORE NOW
-      <i class="fa-solid fa-arrow-right"></i>
-    </a>
-  </div>
+<div class="hero-content">
+<div class="tag">WELCOME TO THE FOOTBALL UNIVERSE</div>
+<h1>MORE THAN<br>JUST <span>FOOTBALL.</span></h1>
+<p>Explore the world of football. Discover clubs, tactics, football stories, match updates and everything about the beautiful game.</p>
+<a href="#features" class="btn">EXPLORE NOW <i class="fa-solid fa-arrow-right"></i></a>
+</div>
 </section>
-
-<!-- FEATURES -->
 <section class="container" id="features">
-
-  <h2 class="section-title">FOOTBALL FEATURES</h2>
-
-  <p class="section-desc">
-    Explore everything about your favorite sport.
-  </p>
-
-  <div class="grid">
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=700" alt="Football match">
-      <div class="card-body">
-        <h3>Football News</h3>
-        <p>Discover football stories, updates and exciting developments.</p>
-        <a href="https://www.bbc.com/sport/football" target="_blank">READ NEWS →</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1518604666860-9ed391f76460?w=700" alt="Football stadium">
-      <div class="card-body">
-        <h3>Match Center</h3>
-        <p>Follow match schedules, scores and football competitions.</p>
-        <a href="https://www.espn.com/soccer/" target="_blank">VIEW MATCHES →</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=700" alt="Football tactics">
-      <div class="card-body">
-        <h3>Football Tactics</h3>
-        <p>Learn formations, strategies and different playing styles.</p>
-        <a href="https://www.coachesvoice.com/" target="_blank">EXPLORE →</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1521412644187-c49fa049e84d?w=700" alt="Football field">
-      <div class="card-body">
-        <h3>Football World</h3>
-        <p>Explore legendary teams, players and football history.</p>
-        <a href="https://www.fifa.com/" target="_blank">DISCOVER →</a>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="stats">
-    <div class="stat">
-      <h2>GLOBAL</h2>
-      <p>FOOTBALL COMMUNITY</p>
-    </div>
-
-    <div class="stat">
-      <h2>24/7</h2>
-      <p>FOOTBALL PASSION</p>
-    </div>
-
-    <div class="stat">
-      <h2>ONE</h2>
-      <p>LOVE FOR FOOTBALL</p>
-    </div>
-  </div>
-
+<h2 class="section-title">FOOTBALL FEATURES</h2>
+<p class="section-desc">Explore everything about your favorite sport.</p>
+<div class="grid">
+<div class="card"><img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=700" alt="Football match"><div class="card-body"><h3>Football News</h3><p>Discover football stories, updates and exciting developments.</p><a href="https://www.bbc.com/sport/football" target="_blank" rel="noopener noreferrer">READ NEWS →</a></div></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1518604666860-9ed391f76460?w=700" alt="Football stadium"><div class="card-body"><h3>Match Center</h3><p>Follow match schedules, scores and football competitions.</p><a href="https://www.espn.com/soccer/" target="_blank" rel="noopener noreferrer">VIEW MATCHES →</a></div></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=700" alt="Football tactics"><div class="card-body"><h3>Football Tactics</h3><p>Learn formations, strategies and different playing styles.</p><a href="https://www.coachesvoice.com/" target="_blank" rel="noopener noreferrer">EXPLORE →</a></div></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1521412644187-c49fa049e84d?w=700" alt="Football field"><div class="card-body"><h3>Football World</h3><p>Explore legendary teams, players and football history.</p><a href="https://www.fifa.com/" target="_blank" rel="noopener noreferrer">DISCOVER →</a></div></div>
+</div>
+<div class="stats">
+<div class="stat"><h2>GLOBAL</h2><p>FOOTBALL COMMUNITY</p></div>
+<div class="stat"><h2>24/7</h2><p>FOOTBALL PASSION</p></div>
+<div class="stat"><h2>ONE</h2><p>LOVE FOR FOOTBALL</p></div>
+</div>
 </section>
-
-<!-- CLUBS -->
 <section class="container" id="clubs">
-
-  <h2 class="section-title">POPULAR FOOTBALL CLUBS</h2>
-
-  <p class="section-desc">
-    Explore some of the biggest football clubs.
-  </p>
-
-  <div class="grid">
-
-    <div class="card club-card">
-      <div class="club-logo">🔴</div>
-      <h3>Arsenal FC</h3>
-      <p>The Gunners — North London, England.</p>
-      <a href="https://www.arsenal.com/" target="_blank">OFFICIAL WEBSITE →</a>
-    </div>
-
-    <div class="card club-card">
-      <div class="club-logo">🔵</div>
-      <h3>Manchester City</h3>
-      <p>The Citizens — Manchester, England.</p>
-      <a href="https://www.mancity.com/" target="_blank">OFFICIAL WEBSITE →</a>
-    </div>
-
-    <div class="card club-card">
-      <div class="club-logo">🔴</div>
-      <h3>Liverpool FC</h3>
-      <p>The Reds — Liverpool, England.</p>
-      <a href="https://www.liverpoolfc.com/" target="_blank">OFFICIAL WEBSITE →</a>
-    </div>
-
-    <div class="card club-card">
-      <div class="club-logo">🟣</div>
-      <h3>Aston Villa</h3>
-      <p>The Villans — Birmingham, England.</p>
-      <a href="https://www.avfc.co.uk/" target="_blank">OFFICIAL WEBSITE →</a>
-    </div>
-
-  </div>
-
+<h2 class="section-title">POPULAR FOOTBALL CLUBS</h2>
+<p class="section-desc">Explore some of the biggest football clubs.</p>
+<div class="grid">
+<div class="card club-card"><div class="club-logo"><img src="https://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg" alt="Logo Arsenal"></div><h3>Arsenal FC</h3><p>The Gunners — North London, England.</p><a href="https://www.arsenal.com/" target="_blank" rel="noopener noreferrer">OFFICIAL WEBSITE →</a></div>
+<div class="card club-card"><div class="club-logo"><img src="https://upload.wikimedia.org/wikipedia/en/e/eb/Manchester_City_FC_badge.svg" alt="Logo Manchester City"></div><h3>Manchester City</h3><p>The Citizens — Manchester, England.</p><a href="https://www.mancity.com/" target="_blank" rel="noopener noreferrer">OFFICIAL WEBSITE →</a></div>
+<div class="card club-card"><div class="club-logo"><img src="https://upload.wikimedia.org/wikipedia/en/0/0c/Liverpool_FC.svg" alt="Logo Liverpool"></div><h3>Liverpool FC</h3><p>The Reds — Liverpool, England.</p><a href="https://www.liverpoolfc.com/" target="_blank" rel="noopener noreferrer">OFFICIAL WEBSITE →</a></div>
+<div class="card club-card"><div class="club-logo"><img src="https://upload.wikimedia.org/wikipedia/en/9/9f/Aston_Villa_FC_crest_%282023%29.svg" alt="Logo Aston Villa"></div><h3>Aston Villa</h3><p>The Villans — Birmingham, England.</p><a href="https://www.avfc.co.uk/" target="_blank" rel="noopener noreferrer">OFFICIAL WEBSITE →</a></div>
+</div>
 </section>
-
-<!-- SOCIAL MEDIA -->
 <section class="container social-section" id="social">
-
-  <div class="tag">CONNECT WITH US</div>
-
-  <h2 class="section-title" style="margin-top:18px">
-    FOLLOW <span style="color:#f21f2b">OMAR SPORTS</span>
-  </h2>
-
-  <p class="section-desc">
-    Follow our social media and stay connected
-    with the football community.
-  </p>
-
-  <div class="social-media">
-
-    <!-- GANTI USERNAME -->
-    <a href="https://instagram.com/USERNAME"
-       target="_blank" rel="noopener"
-       class="social-btn instagram">
-      <i class="fa-brands fa-instagram"></i>
-      <span>Instagram</span>
-    </a>
-
-    <a href="https://x.com/USERNAME"
-       target="_blank" rel="noopener"
-       class="social-btn twitter">
-      <i class="fa-brands fa-x-twitter"></i>
-      <span>Twitter / X</span>
-    </a>
-
-    <a href="https://youtube.com/@USERNAME"
-       target="_blank" rel="noopener"
-       class="social-btn youtube">
-      <i class="fa-brands fa-youtube"></i>
-      <span>YouTube</span>
-    </a>
-
-    <!-- GANTI NOMOR WHATSAPP -->
-    <a href="https://wa.me/628XXXXXXXXXX"
-       target="_blank" rel="noopener"
-       class="social-btn whatsapp">
-      <i class="fa-brands fa-whatsapp"></i>
-      <span>WhatsApp</span>
-    </a>
-
-  </div>
-
+<div class="tag">CONNECT WITH US</div>
+<h2 class="section-title" style="margin-top:18px">FOLLOW <span style="color:#f21f2b">OMAR SPORTS</span></h2>
+<p class="section-desc">Follow our social media and stay connected with the football community.</p>
+<div class="social-media">
+<a href="https://www.instagram.com/omrbnzkh/" target="_blank" rel="noopener noreferrer" class="social-btn instagram"><i class="fa-brands fa-instagram"></i><span>Instagram</span></a>
+<a href="https://x.com/benezka43737" target="_blank" rel="noopener noreferrer" class="social-btn twitter"><i class="fa-brands fa-x-twitter"></i><span>Twitter / X</span></a>
+<a href="https://www.youtube.com/@m.omar7773" target="_blank" rel="noopener noreferrer" class="social-btn youtube"><i class="fa-brands fa-youtube"></i><span>YouTube</span></a>
+<a href="https://wa.me/6285814877645" target="_blank" rel="noopener noreferrer" class="social-btn whatsapp"><i class="fa-brands fa-whatsapp"></i><span>WhatsApp</span></a>
+</div>
 </section>
-
-<!-- FOOTER -->
-<footer>
-  <p>
-    © 2026 <strong>OMAR SPORTS</strong>.
-    All Rights Reserved.
-  </p>
-
-  <p style="margin-top:12px">
-    BUILT FOR THE LOVE OF FOOTBALL ⚽
-  </p>
-</footer>
-
-<!-- BACK TO TOP -->
-<a href="#home" class="back-top" aria-label="Back to top">
-  <i class="fa-solid fa-arrow-up"></i>
-</a>
-
+<footer><p>© 2026 <strong>OMAR SPORTS</strong>. All Rights Reserved.</p><p style="margin-top:12px">BUILT FOR THE LOVE OF FOOTBALL ⚽</p></footer>
+<a href="#home" class="back-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
 <script>
-function toggleMenu() {
-  document.getElementById("navLinks")
-    .classList.toggle("active");
+function toggleMenu(){
+ const nav=document.getElementById("navLinks");
+ const button=document.querySelector(".menu-btn");
+ const isOpen=nav.classList.toggle("active");
+ button.setAttribute("aria-expanded",String(isOpen));
 }
-
-document.querySelectorAll(".nav-links a").forEach(link => {
-  link.addEventListener("click", () => {
-    document.getElementById("navLinks")
-      .classList.remove("active");
-  });
+document.querySelectorAll(".nav-links a").forEach(link=>{
+ link.addEventListener("click",()=>{
+  document.getElementById("navLinks").classList.remove("active");
+  document.querySelector(".menu-btn").setAttribute("aria-expanded","false");
+ });
 });
 </script>
-
 </body>
 </html>
