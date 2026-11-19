@@ -470,6 +470,85 @@ function buildTeam() {
   });
 }
 
+<!-- SOCIAL MEDIA OMAR SPORTS -->
+<div class="social-media">
+  <a href="https://instagram.com/USERNAME"
+     target="_blank" class="social-btn instagram">
+    <i class="fa-brands fa-instagram"></i>
+    <span>Instagram</span>
+  </a>
+
+  <a href="https://x.com/USERNAME"
+     target="_blank" class="social-btn twitter">
+    <i class="fa-brands fa-x-twitter"></i>
+    <span>Twitter</span>
+  </a>
+
+  <a href="https://youtube.com/@USERNAME"
+     target="_blank" class="social-btn youtube">
+    <i class="fa-brands fa-youtube"></i>
+    <span>YouTube</span>
+  </a>
+
+  <a href="https://wa.me/628XXXXXXXXXX"
+     target="_blank" class="social-btn whatsapp">
+    <i class="fa-brands fa-whatsapp"></i>
+    <span>WhatsApp</span>
+  </a>
+</div>
+
+<!-- ICON LIBRARY -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<style>
+.social-media {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 30px 15px;
+  background: #101116;
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 21px;
+  border: 1px solid #34343d;
+  border-radius: 12px;
+  color: white;
+  background: #191a22;
+  text-decoration: none;
+  font-weight: 700;
+  transition: .3s ease;
+}
+
+.social-btn i {
+  font-size: 21px;
+}
+
+.social-btn:hover {
+  transform: translateY(-6px);
+  border-color: #f21f2b;
+  box-shadow: 0 8px 25px #f21f2b35;
+}
+
+.instagram:hover { color: #e879c5; }
+.twitter:hover { color: #55acee; }
+.youtube:hover { color: #ff3333; }
+.whatsapp:hover { color: #25d366; }
+
+@media(max-width:480px) {
+  .social-btn {
+    flex: 1 1 40%;
+    justify-content: center;
+  }
+}
+</style>
+
 buildTeam();
 </script>
 
